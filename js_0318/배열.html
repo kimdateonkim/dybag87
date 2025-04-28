@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배열</title>
+</head>
+<body>
+  <script>
+    let a = [3,4,5,6,7,8];
+    //a배열의 배열요소를 분해하여 각각 변수(e1,e2...)에 할당
+    let [e1, e2, ...e3] = a;
+    //...e3 = 배열요소들을 분해하여 새로운 배열로 할당
+    console.log(e1, e2)
+    console.log(e3)
+
+    let b, c;
+    [b, c] = [5, 6]
+    console.log(b, c);    
+    [b, c] = [c, b]
+    console.log(b, c);
+
+    a = []
+    a[0] = 3;//a[0]에 3을 대입
+    a[1] = 4;//a[1]에 4을 대입
+    console.log(a)
+    a[0] = 5;//a[0]에 5를 대입
+    console.log(a)
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!--vuejs CDN-->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="textValue" />
+    <!--textValue상태값이 빈문자열이면 버튼을 비활성화하고 빈문자열이 아니면 버튼을 활성화시킴-->
+    <button type="button" :disabled="textValue === ''">Click</button>
+  </div>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          textValue: ""
+        }
+      }
+    })
+
+    app.mount("#app")
+  </script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://kit.fontawesome.com/632d3e2496.js" crossorigin="anonymous"></script>
+  <style>
+    *{margin:0; padding:0; box-sizing: border-box;}
+    ul,li{list-style: none;}
+    a{text-decoration: none;}
+
+    body{
+      font-family: 'Courier New', Courier, monospace;
+      color:#333;
+      line-height:1.4;
+      font-size:15px;
+    }
+    html,body{height:100%;}/*이렇게 하면 body의 자손인 #main에 height:100%를 설정할 수 있다*/
+    #main{
+      width: 100%;
+      height: 100%;
+      background:linear-gradient(0deg,rgba(255,255,255,0.2),rgba(255,255,255,0.2)), url(images/pexels-photo-1169754.jpeg) center/cover;
+      position:relative;
+    }
+
+    #main > .txt{
+      position:absolute;
+      left:50%; top:50%;
+      transform: translate(-50%,-50%);
+      text-align: center;
+    }
+    #main .txt h1{
+      color:#111;
+      font-size:36px;
+    }
+    #main .txt p{
+      color:#111;
+      font-size:18px;
+      margin:40px 0;
+    }
+    #main .txt a{
+      display:inline-block;
+      padding:6px 32px;
+      border:1px solid #111;
+      color:#111;
+      font-weight: bold;
+      transition:all 0.3s;
+    }
+    #main .txt a:hover{
+      background-color:#111;
+      color:#d9d9d9;
+    }
+
+    .dot{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      right:10px;
+    }
+    .dot > li{
+      width:15px; 
+      height:15px;
+      border:1px solid #111;
+      border-radius: 50%;
+      margin:10px 0;
+      opacity:0.5;
+      cursor:pointer;
+    }
+    .dot > li:hover{
+      opacity:1;
+    }
+    .dot > li.on{
+      opacity:1;
+      background-color:#111;
+    }
+
+    /*사이드바*/
+    #sidebar{
+      position:fixed;
+      width:360px;
+      height:100%;
+      z-index: 10;
+      background-color:#666;
+      color:#fff;
+      padding:0 90px;
+      left:-360px;
+      transition:all 0.5s;
+    }
+    /*sidebar에 on클래스가 추가되면 브라우저 안쪽으로 이동*/
+    #sidebar.on{
+      left:0;
+    }
+    .close{
+      position:absolute;
+      top:10px;
+      right:-55px;
+      cursor:pointer;
+      transition:all 0.5s;
+    }
+    /*sidebar에 on클래스가 추가되면 close버튼이 sidebar안으로 이동하는 구문*/
+    #sidebar.on .close{
+      right:20px;
+    }
+
+    .bar1, .bar2, .bar3{
+      width:35px;
+      height:5px;
+      background-color:#111;
+      margin:6px 0;
+      transition:all 0.5s;
+    }
+    /*sidebar에 on클래스가 추가되면 메뉴 모양을 x자로 변경*/
+    #sidebar.on .bar1{
+      transform:rotate(-45deg) translate(-9px, 6.5px);
+      background-color:#fff;
+    }
+    #sidebar.on .bar2{
+      opacity:0;
+    }
+    #sidebar.on .bar3{
+      transform:rotate(45deg) translate(-7.5px, -7.5px);
+      background-color:#fff;
+    }
+
+
+    #gnb{
+      margin-top:100px;
+      padding-bottom:20px;
+      border-bottom:1px solid #fff;
+    }
+    #gnb a{
+      display:block;
+      color:#fff;
+      margin-top:40px;
+    }
+    #sidebar p{
+      margin:20px 0;
+      font-size:13px;
+    }
+    #sidebar .user a{
+      display:inline-block;
+      color:#fff;
+      border:1px solid #fff;
+      width:30px;
+      height:30px;
+      border-radius: 50%;
+      text-align: center;
+      padding:5px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <div class="close">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    <ul id="gnb">
+      <li><a href="#">about</a></li>
+      <li><a href="#">news</a></li>
+      <li><a href="#">portfolio</a></li>
+      <li><a href="#">board</a></li>
+      <li><a href="#">album</a></li>
+      <li><a href="#">contact</a></li>
+    </ul>
+    <p>Lorem ipsum dolor sit amet, consectetur</p>
+    <div class="user">
+      <a href="#"><i class="far fa-user"></i></a>
+      <a href="#"><i class="far fa-user"></i></a>
+      <a href="#"><i class="far fa-user"></i></a>
+    </div>
+  </div>
+  <section id="main">
+    <div class="txt">
+      <h1>LOGO</h1>
+      <p>
+        Lorem ipsum dolor sit amet <br>
+        adipisicing elit. Quo eaque
+      </p>
+      <a href="#">BUTTON</a>
+    </div>
+    <!--indicator = dot-->
+    <ul class="dot">
+      <li class="on"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </section>
+  <script>
+    const bClose = document.querySelector(".close");
+    const sidebar = document.querySelector("#sidebar");
+
+    //메뉴버튼에 클릭이벤트 생성
+    bClose.addEventListener("click",() => {
+      //sidebar에 on클래스를 추가 또는 제거
+      sidebar.classList.toggle("on")
+    })
+  </script>
+</body>
+</html>

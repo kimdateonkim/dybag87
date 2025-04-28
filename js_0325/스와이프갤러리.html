@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스와이프갤러리</title>
+  <!--폰트어썸 CDN-->
+  <script src="https://kit.fontawesome.com/632d3e2496.js" crossorigin="anonymous"></script>
+  <!--swiper CDN-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!--css 외부정의-->
+  <link href="css/style.css" rel="stylesheet">
+  <!--js 외부정의-->
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <div class="wrap">
+    <!--제목-->
+    <h1>UI/UX <span>PORTFOLIO</span></h1>
+    <!--오토플레이 버튼-->
+    <ul class="auto">
+      <li class="btnStart"><i class="fas fa-play"></i></li>
+      <li class="btnStop"><i class="fas fa-pause"></i></li>
+    </ul>
+
+    <!--스와이프 갤러리-->
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="inner">
+          <div class="content">
+            <img src="img/pic1.png" alt="">
+            <h2>Subscript</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+        </div>
+      </div><!--swiper-slide END-->
+      <div class="swiper-slide">
+        <div class="inner">
+          <div class="content">
+            <img src="img/pic2.png" alt="">
+            <h2>Subscript</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+        </div>
+      </div><!--swiper-slide END-->
+      <div class="swiper-slide">
+        <div class="inner">
+          <div class="content">
+            <img src="img/pic3.png" alt="">
+            <h2>Subscript</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+        </div>
+      </div><!--swiper-slide END-->
+      <div class="swiper-slide">
+        <div class="inner">
+          <div class="content">
+            <img src="img/pic4.png" alt="">
+            <h2>Subscript</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+        </div>
+      </div><!--swiper-slide END-->
+      <div class="swiper-slide">
+        <div class="inner">
+          <div class="content">
+            <img src="img/pic5.png" alt="">
+            <h2>Subscript</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+        </div>
+      </div><!--swiper-slide END-->
+    </div>
+    <!--좌우 버튼-->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <!--페이징 버튼-->
+    <div class="swiper-pagination"></div>
+  </div>
+</body>
+</html>

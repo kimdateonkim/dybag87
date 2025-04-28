@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문자열찍기</title>
+</head>
+<body>
+  <p id="typing" style="font-size:20px;"></p>
+
+  <script>
+    //typing요소에 들어갈 문자
+    let x = "Heaven helps those who help themselves.";
+    let i = 0; //글자의 순번을 담을 변수
+
+    //typing요소를 선택
+    const typing = document.querySelector("#typing");
+
+    //typeWriter함수를 생성
+    //function typeWriter(){}
+    const typeWriter = () => {
+      //i변수가 x변수의 글자수 보다 작은 숫자일 때 실행
+      if(i < x.length){
+        //typing요소에 x변수의 글자중 index가 i번째인 글자를 더해서 할당
+        typing.innerHTML += x[i];
+        i++;//i변수에 1을 더해서 다시 i변수에 할당
+        
+        setTimeout(typeWriter, 200);//0.2초 후에 typeWriter함수를 호출
+      }else{//i변수가 x변수의 글자수 보다 같거나 커지면 실행
+        i = 0; //i를 0으로 초기화하고
+        //1초뒤에 recall함수를 호출
+        setTimeout(recall, 1000);
+      }
+    }
+
+    //recall함수 생성
+    const recall = () => {
+      //typing요소의 글자를 모두 비워줍니다
+      typing.textContent = "";
+      typeWriter();//다시 typeWriter함수를 호출하여 처음부터 다시 실행
+    }
+
+    //typeWriter함수 호출
+    typeWriter();
+  </script>
+</body>
+</html>

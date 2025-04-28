@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>레이아웃연습</title>
+  <style>
+    *{margin:0; padding:0;}
+    .container{
+      width:1080px;
+      margin:auto;
+      display:flex;
+      justify-content: space-between;/*주축을 같은 간격으로 정렬*/
+      align-items: center;/*교차축을 가운데 정렬(컨텐츠가 한줄일때 사용)*/
+    }
+    .box{
+      width:520px;
+    }
+    article{
+      height:160px;
+      display:flex;
+      justify-content: space-between;/*주축으로 같은 간격으로 정렬*/
+      /* align-content: space-between;교차축으로 같은 간격으로 정렬(컨텐츠가 2줄 이상일때 사용) */
+    }
+    article:nth-child(2){
+      margin:20px 0;
+    }
+    .txt{
+      width:340px;
+      border-top:1px solid #ccc;
+      border-bottom:1px solid #ccc;
+    }
+    .txt > h2{
+      font-size:14px;
+      color:#666;
+      line-height: 30px;
+      margin-bottom:10px;
+    }
+    .txt > p{
+      font-size:14px;
+      color:#666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <article>
+        <img src="https://picsum.photos/160/160">
+        <div class="txt">
+          <h2>DESCRIPTION</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Ea itaque veniam nulla, quidem facilis atque ullam. Nesciunt,</p> 
+          <p>magni expedita ea voluptatem neque odio quas</p>
+        </div>
+      </article>
+      <article>
+        <img src="https://picsum.photos/160/160">
+        <div class="txt">
+          <h2>DESCRIPTION</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Ea itaque veniam nulla, quidem facilis atque ullam. Nesciunt,</p> 
+          <p>magni expedita ea voluptatem neque odio quas</p>
+        </div>
+      </article>
+      <article>
+        <img src="https://picsum.photos/160/160">
+        <div class="txt">
+          <h2>DESCRIPTION</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Ea itaque veniam nulla, quidem facilis atque ullam. Nesciunt,</p> 
+          <p>magni expedita ea voluptatem neque odio quas</p>
+        </div>
+      </article>
+    </div>
+    <div class="box">
+      <img src="https://images.unsplash.com/photo-1739286955022-569369156bc4?q=80&w=1288&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="520" height="520">
+    </div>
+  </div>
+</body>
+</html>

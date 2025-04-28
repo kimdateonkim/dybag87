@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>swiper플러그인 활용</title>
+  <!--swiper CDN-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <style>
+    .swiper {
+      width: 600px;
+      height: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Slider main container -->
+  <div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide"><img src="img/lop0.jpg"></div>
+      <div class="swiper-slide"><img src="img/lop1.jpg"></div>
+      <div class="swiper-slide"><img src="img/lop2.jpg"></div>
+
+    </div>
+    <!-- 닷버튼 -->
+    <div class="swiper-pagination"></div>
+
+    <!-- 화살표 버튼 -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- 스크롤바 -->
+    <div class="swiper-scrollbar"></div>
+  </div>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      // Optional parameters
+      direction: 'horizontal', //슬라이드 방향(horizontal = 가로, vertical = 세로)
+      loop: true, //한쪽 방향으로 무한 슬라이드
+
+      // If we need pagination
+      pagination: { //닷버튼
+        el: '.swiper-pagination',
+      },
+      slidesPerView:2,
+
+      // Navigation arrows
+      navigation: { //화살표 버튼
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+
+      // And if we need scrollbar
+      scrollbar: { //스크롤바 표시
+        el: '.swiper-scrollbar',
+      },
+    });
+  </script>
+</body>
+
+</html>

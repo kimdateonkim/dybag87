@@ -1,0 +1,123 @@
+/*태블릿용*/
+@media screen and (min-width:768px){
+  //768px이상부터 적용
+  .divider{
+    margin-top:124px;
+  }
+  .m-divider{
+    margin-top:124px;
+  }
+  .header{
+    padding:28px 52px;
+    .gnb{
+      display:block;
+      position:static;//포지션 속성 초기화
+      max-height:none !important;//max-height값을 제거하여 화면에 메뉴가 표시되게 변경
+      float:right;
+      width:auto;
+      margin-top:6px;
+      background:transparent;
+      li{
+        float:left;
+        border-bottom:0;
+        margin-left:20px;
+        a{
+          color:#3f51b5;
+          user-select: none;
+          padding:0;
+          font-size:1rem;
+          word-break: keep-all;//줄바꿈 되지 않음
+        }
+      }
+    }
+    .menu-toggle-btn{
+      display:none;
+    }
+  }
+
+  .display-section{
+    margin-top:95px;
+  }
+  .promotion-section{
+    margin-top:110px;
+    .promo-list{
+      li{
+        //177px 나누기 768
+        width:23.046875%;
+        margin-top:0;
+        float:left;
+        margin-left:2.6041666666666%;
+        &:first-child{
+          margin-left:0;
+        }
+      }
+    }
+  }
+  .work-section{
+    margin-top:118px;
+    .sec-tit{
+      margin-bottom:76px;
+    }
+    .work-list{
+      li{
+        float:left;
+        width:50%;
+        a{
+          .info{
+            left:37px;
+          }
+          &:hover{
+            .info{
+              transform:translateY(37px);
+            }
+          }
+        }
+      }
+    }
+  }
+  .blog-section{
+    margin-top:124px;
+    .sec-tit{
+      margin-bottom:76px;
+    }
+    .blog-list{
+      li{
+        float:left;
+        width:31.597222%;
+        margin-left:2.6041%;
+        margin-top:0;
+        &:first-child{
+          margin-left:0;
+        }
+      }
+    }
+  }
+  .contact-section{
+    margin-top:176px;
+    .sec-tit{
+      margin-bottom:76px;
+    }
+    .form-box{
+      .form, .textarea{
+        float:left;
+        width:48.6979%;
+      }
+      .form{
+        margin-right:2.6041%;
+        input{
+          &:last-child{
+            margin-bottom:0;
+          }
+        }
+      }
+    }
+  }
+  .footer{
+    iframe{
+      height:432px;
+    }
+    p{
+      margin:34px 0;
+    }
+  }
+}

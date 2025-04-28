@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>setTimeout메서드</title>
+</head>
+<body>
+  <script>
+    const printTime = (msg) => { //printTime함수 생성 매개변수로 msg를 전달 받음
+      console.log(msg, new Date())//콘솔에 msg와 현재 날짜정보를 출력
+    }
+
+    //해당 딜레이 타임 후에 printTime함수를 한번만 호출
+    setTimeout(printTime, 1000, "1초후")
+    setTimeout(printTime, 2000, "2초후")
+    let id = setTimeout(printTime, 3000, "3초후")
+    clearTimeout(id);//setTimeout함수를 종료 시킴
+
+    let timer = setInterval(printTime, 3000, "3초간격") //3초 간격으로 출력이 계속된다
+    clearInterval(timer);//setInterval함수를 종료 시킴
+  </script>
+</body>
+</html>

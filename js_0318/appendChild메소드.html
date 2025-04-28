@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>appendChild메소드</title>
+  <style>
+    li{font-size:20px;}
+  </style>
+</head>
+<body>
+  <ul id="fruits">
+    <li>Apple</li>
+  </ul>
+  <script>
+    //appendChild메소드는 한 노드를 특정 부모 노드의 자식 노드 리스트 중 마지막 자식으로 붙입니다
+
+    const fruits = document.getElementById("fruits");
+
+    //li요소 노드를 생성
+    const li = document.createElement("li");
+    //텍스트 노드를 생성
+    const textNode = document.createTextNode('Banana');
+    //텍스트 노드를 li요소 노드의 자식 노드로 추가
+    li.appendChild(textNode);
+    //li요소 노드를 #fruits요소 노드의 마지막 자식 노드로 추가
+    fruits.appendChild(li);
+
+
+    //복수의 노드 생성과 추가
+    //createDocumentFragment노드를 통해 DOM을 한번만 변경하여 복수노드를 추가하는 것이 가능하다
+
+    //fragment노드 생성
+    const fragment = document.createDocumentFragment();
+
+    //forEach로 배열을 순회하면서 배열요소를 text에 담아서 콜백함수로 전달
+    ['Orange','Grape','kiwi'].forEach(text => {
+      //li요소 노드를 생성
+      const li = document.createElement("li");
+      //텍스트 노드를 생성
+      const textNode = document.createTextNode(text);
+      //textNode를 li노드의 마지막 자식 노드로 추가
+      li.appendChild(textNode)
+      //li요소를 documentfragment노드의 마지막 자식 노드로 추가
+      fragment.appendChild(li);
+    })
+    //DocumentFragment노드를 fruits요소 노드의 마지막 자식 노드로 추가
+    fruits.appendChild(fragment);
+  </script>
+</body>
+</html>

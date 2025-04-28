@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://kit.fontawesome.com/632d3e2496.js" crossorigin="anonymous"></script>
+  <style>
+    *{margin:0; padding:0;}
+    ul, li{ list-style:none; }
+    a{text-decoration: none;}
+    
+    nav{
+      min-width:1000px;
+      border-bottom:1px solid #d9d9d9;
+    }
+    nav .wrap{
+      width:1000px;
+      margin:auto;
+      height:80px;
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      padding:0 20px;
+      box-sizing: border-box;
+    }
+    #gnb{
+      display:flex;
+      gap:60px;
+    }
+    #gnb a{
+      color:#333;
+    }
+
+    .search{
+      display:flex;
+      gap:5px;
+    }
+    .search-icon{
+      padding:5px;
+      cursor:pointer;
+      font-size:18px;
+      color:#333;
+    }
+
+    .search-input{
+      padding:5px;
+      border-radius: 5px;
+      border:1px solid #ccc;
+      outline:none;
+      width:0;
+      visibility: hidden;
+      transition: width 0.3s ease-in-out;
+    }
+
+    .search-input.on{ /*입력창에 on클래스가 추가되면 스타일 변경*/
+      width:200px;
+      visibility: visible;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <ul id="gnb">
+        <li><a href="#">메뉴</a></li>
+        <li><a href="#">메뉴</a></li>
+        <li><a href="#">메뉴</a></li>
+        <li><a href="#">메뉴</a></li>
+        <li><a href="#">메뉴</a></li>
+        <li><a href="#">메뉴</a></li>
+      </ul>
+      <div class="search">
+        <input type="text" class="search-input" placeholder="검색어를 입력하세요">
+        <span class="search-icon"><i class="fas fa-search"></i></span>
+      </div>
+    </div>
+  </nav>
+  <script>
+    //1. search-icon을 선택 후 클릭 이벤트 생성
+    document.querySelector(".search-icon").addEventListener("click", () => {
+      //2. search-input을 선택 후 search-input에 on클래스가 존재하면 제거하고 존재하지 않으면 추가
+      const searchInput = document.querySelector(".search-input");
+      searchInput.classList.toggle("on");
+      //클래스 존재 여부 확인 = 선택자.classList.contains("클래스명")
+      //3. search-input에 on클래스가 존재하면 search-input에 포커싱(.focus())
+      if(searchInput.classList.contains("on")){
+        searchInput.focus();
+      }
+    })
+  </script>
+</body>
+</html>

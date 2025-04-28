@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로고영상편집</title>
+
+    <style>
+        .mask-wrapper video {
+          -webkit-mask-image: url('logo.png');
+          -webkit-mask-size: contain;
+          -webkit-mask-repeat: no-repeat;
+          -webkit-mask-position: center;
+          mask-image: url('logo.png');
+          mask-size: contain;
+          mask-repeat: no-repeat;
+          mask-position: center;
+        }
+      </style>
+</head>
+<body>
+    <div class="mask-wrapper">
+        <video src="video.mp4" autoplay muted loop></video>
+        <svg viewBox="0 0 500 500" class="mask-svg">
+          <mask id="logo-mask">
+            <image href="logo.png" x="0" y="0" width="500" height="500" />
+          </mask>
+        </svg>
+      </div>
+
+</body>
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>슬라이드메뉴</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    body {
+      font-family: "Open Sans", sans-serif;
+      font-size: 16px;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    /*header*/
+    .header {
+      width: 1020px;
+      margin: auto;
+      height: 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header .social {
+      width: 196px;
+      height: 25px;
+    }
+
+    .header .social ul {
+      display: flex;
+    }
+
+    .header .social li a {
+      display: block;
+      margin-right: 6px;
+      width: 25px;
+      height: 25px;
+    }
+
+    .header .signature {
+      width: 155px;
+      height: 78px;
+    }
+
+    .header .signature img {
+      width: 100%;
+    }
+
+    .header .location ul {
+      height: 26px;
+      display: flex;
+    }
+
+    .header .location a {
+      display: block;
+      padding: 0 15px;
+      line-height: 26px;
+      text-align: center;
+      font-family: "돋움", Dotum;
+      font-size: 12px;
+      color: #797d85;
+      background: url(img/bg_table_col.gif) no-repeat left center;
+    }
+
+    .header .location li:first-child a {
+      background: none;
+    }
+
+    .header .location li:last-child a {
+      padding-right: 0;
+    }
+
+    /*nav*/
+    .nav {
+      position: relative;
+    }
+
+    .nav>ul {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 54px;
+      overflow: hidden;
+      text-align: center;
+      background: #fff;
+      transition: height 0.3s;
+    }
+
+    .nav>ul.over {
+      height: 185px;
+    }
+
+    .nav>ul>li {
+      display: inline-block;
+      position: relative;
+      margin-left: 61px;
+      height: 54px;
+      overflow: hidden;
+    }
+
+    .nav>ul.over>li {
+      height: 185px;
+    }
+
+    .nav>ul>li:first-child {
+      margin-left: 0;
+    }
+
+    .nav>ul>li>a {
+      display: block;
+      padding: 0 30px;
+      line-height: 54px;
+      font-size: 14px;
+      color: #2f2f2f;
+    }
+
+    .nav>ul>li:first-child>a {
+      padding-left: 0;
+    }
+
+    .nav>ul>li:last-child>a {
+      padding-right: 0;
+    }
+
+    .nav>ul>li:hover>a {
+      color: #b4252d;
+    }
+
+    .nav .sub {
+      position: absolute;
+      margin-left: 30px;
+      padding-top: 14px;
+      width: 100%;
+      height: 130px;
+    }
+
+    .nav>ul>li:first-child>.sub {
+      margin-left: 0;
+    }
+
+    .nav .sub a {
+      display: block;
+      padding: 6px 0 7px;
+      line-height: 1;
+      text-align: left;
+      font-size: 12px;
+      color: #a0a0a0;
+    }
+
+    .nav .sub a:hover {
+      text-decoration: underline;
+      color: #000;
+    }
+
+    /*mobile nav*/
+    .mobile_tab{
+      display:none;
+      position:absolute;
+      right:0;
+      top:0;
+      z-index: 90;
+      margin-right:20px;
+      margin-top:15px;
+      width:28px;
+    }
+
+    .mobile_nav{
+      position:fixed;
+      right:-220px;
+      top:0;
+      z-index: 110;
+      padding:40px 24px;
+      width:220px;
+      height:100%;
+      background:#fff;
+      box-sizing: border-box;
+      box-shadow: 0 0 2px rgba(0,0,0,0.2);
+      transition: right 0.4s ease-out;
+    }
+    .mobile_nav.active{
+      right:0;
+    }
+
+    .mobile_nav > ul > li > a{
+      display:block;
+      padding:0 10px;
+      width:100%;
+      line-height:50px;
+      font-size:14px;
+      font-weight: 600;
+      color:#2f2f2f;
+      border-bottom:1px dotted #ccc;
+      box-sizing: border-box;
+    }
+    .mobile_nav > ul > li:hover > a{
+      color:#b4252d;
+    }
+
+    .mobile_nav .sub{
+      display:block;
+      overflow: hidden;
+      max-height: 0;
+      transition:max-height 0.3s;
+    }
+    .mobile_nav .sub > li{
+      height:35px;
+      border-top: 1px dotted #eaeaea;
+    }
+    .mobile_nav .sub > li:first-child{
+      border-top:none;
+    }
+    .mobile_nav .sub > li > a{
+      display:block;
+      padding:0 10px;
+      width:100%;
+      line-height:35px;
+      font-size:13px;
+      color:#2f2f2f;
+      background:#f4f4f4;
+      border-bottom:1px dotted #eaeaea;
+      box-sizing: border-box;
+      transition: background 0.3s;
+    }
+    .mobile_nav .sub > li > a:hover{
+      background:#fff;
+    }
+
+    /*hero*/
+    .hero {
+      margin-top: 54px;
+    }
+
+    .hero img {
+      width: 100%;
+    }
+
+    /*transparency*/
+    .transparency {
+      display: none;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      top: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 100;
+    }
+
+    .transparency.active {
+      display: block;
+    }
+
+    /*1050px 이하 적용*/
+    @media screen and (max-width:1050px) {
+      .header{
+        width:826px;
+      }
+      .nav > ul > li:last-child{
+        display:none;
+      }
+      .nav > ul > li:nth-child(5) a{
+        padding-right:0;
+      }
+    }
+    /*850px 이하 적용*/
+    @media screen and (max-width:850px){
+      .header{
+        width:auto;
+        height:72px;
+      }
+      .header .social{
+        margin-left: 20px;
+      }
+      .header .signature{
+        position:absolute;
+        left: calc(50% - 50px);
+        top:10px;
+        width:100px;
+        height:54px;
+      }
+      .header .location{display:none;}
+      .mobile_tab{display:block;}
+      .nav{display:none;}
+      .hero{
+        margin-top:0;
+      }
+    }
+    @media screen and (max-width:380px){
+      .header .social{
+        display:none;
+      }
+      .header .signature{
+        left:0;
+        margin-left:12px;
+      }
+    }
+
+    /*전체 영역이 움직이는 컨테이너*/
+    .container{
+      position:relative;
+      left:0;
+      transition: left 0.4s ease-out;
+    }
+    .container.active{
+      left:-220px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="social">
+        <ul>
+          <li><a href="#">
+              <img src="img/social_icon1.gif" alt="">
+            </a></li>
+          <li><a href="#">
+              <img src="img/social_icon2.gif" alt="">
+            </a></li>
+          <li><a href="#">
+              <img src="img/social_icon3.gif" alt="">
+            </a></li>
+        </ul>
+      </div>
+      <div class="signature">
+        <a href="#"><img src="img/signature.gif"></a>
+      </div>
+      <div class="location">
+        <ul>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Join</a></li>
+          <li><a href="#">개인정보취급방침</a></li>
+        </ul>
+      </div>
+    </div><!--header END-->
+    <div class="mobile_tab">
+      <a href="#">
+        <img src="img/gnb_btn.png" alt="">
+      </a>
+    </div>
+
+    <div class="mobile_nav">
+      <ul>
+        <li>
+          <a href="#">ZISHEN</a>
+          <ul class="sub">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Lookbook</a></li>
+            <li><a href="#">Catalogue</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">ZISHEN HOMME</a>
+          <ul class="sub">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Lookbook</a></li>
+            <li><a href="#">Catalogue</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">MEDIA</a>
+          <ul class="sub">
+            <li><a href="#">Movie</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Event</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">SERVICE</a>
+          <ul class="sub">
+            <li><a href="#">Faq</a></li>
+            <li><a href="#">1:1 Service</a></li>
+            <li><a href="#">Group Order</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">SHOP INFO</a>
+          <ul class="sub">
+            <li><a href="#">Shop Info</a></li>
+            <li><a href="#">Open Guide</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">COMPANY</a>
+          <ul class="sub">
+            <li><a href="#">Company</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!--mobile_nav END-->
+
+    <div class="nav">
+      <ul>
+        <li>
+          <a href="#">ZISHEN</a>
+          <ul class="sub">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Lookbook</a></li>
+            <li><a href="#">Catalogue</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">ZISHEN HOMME</a>
+          <ul class="sub">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Lookbook</a></li>
+            <li><a href="#">Catalogue</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">MEDIA</a>
+          <ul class="sub">
+            <li><a href="#">Movie</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Event</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">SERVICE</a>
+          <ul class="sub">
+            <li><a href="#">Faq</a></li>
+            <li><a href="#">1:1 Service</a></li>
+            <li><a href="#">Group Order</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">SHOP INFO</a>
+          <ul class="sub">
+            <li><a href="#">Shop Info</a></li>
+            <li><a href="#">Open Guide</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">COMPANY</a>
+          <ul class="sub">
+            <li><a href="#">Company</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!--nav END-->
+
+    <div class="hero"><img src="img/hero.jpg" alt=""></div>
+  </div><!--container END-->
+
+  <!--슬라이드 메뉴가 나타날때 배경을 어둡게 만들기 위해 추가하는 요소-->
+  <div class="transparency"></div>
+  <script>
+    //현재 장치의 상태를 저장(모바일 또는 pc)
+    let deviceStatus = '';
+    //subSlideUp함수는 모바일 내비게이션 메뉴의 모든 하위 메뉴(.sub)의 maxHeight를 0으로 설정하여 하위 메뉴들을 숨깁니다
+    function subSlideUp(){
+      document.querySelectorAll(".mobile_nav .sub").forEach(item => item.style.maxHeight = "0px")
+    }
+
+    const mobileNav = document.querySelector(".mobile_nav")
+    const transparency = document.querySelector(".transparency")
+    const container = document.querySelector(".container")
+    //reset함수는 모바일 내비게이션 및 관련 UI요소를 초기상태로 돌리는 역할
+    function reset(){
+      mobileNav.classList.remove("active")
+      transparency.classList.remove("active")
+      container.classList.remove("active")
+      subSlideUp();
+    }
+
+    //창 크기가 변경될 때마다 호출되는 리사이즈 이벤트
+    window.addEventListener("resize", () => {
+      //850px 이하면 mobile, 이상이면 pc를 deviceStatus변수에 할당
+      deviceStatus = window.innerWidth <= 850 ? 'mobile' : 'pc';
+
+      //모바일 내비게이션이 활성화되어 있다면 reset()함수를 호출하여 초기상태로 되돌립니다
+      if(deviceStatus === 'pc' && mobileNav.classList.contains('active')){//deviceStatus가 pc이고 mobileNav에 active클래스가 있으면 reset함수를 호출하여 초기화
+        reset();
+      }
+    })
+
+    //모든 .nav ul요소에 대해 mouseenter와 mouseleave이벤트 생성
+    document.querySelectorAll(".nav ul").forEach(item => {
+      item.addEventListener("mouseenter",() => {
+        if(deviceStatus === 'pc'){
+          // console.log(item)
+          item.classList.add("over");//over클래스가 추가되면 이벤트가 발생한 메뉴의 높이가 185px로 변경
+        }
+      })
+      item.addEventListener("mouseleave",() => {
+        if(deviceStatus === 'pc'){
+          // console.log(item)
+          item.classList.remove("over");//over클래스가 제거되면 이벤트가 발생한 메뉴의 높이가 54px로 변경
+        }
+      })
+    })
+
+    //모바일 탭버튼에 클릭이벤트 추가
+    document.querySelector(".mobile_tab").addEventListener("click", (e) => {
+      e.preventDefault()//a요소의 기본 링크 기능을 제거
+      //active클래스를 추가하여 UI를 표시
+      mobileNav.classList.add("active")
+      transparency.classList.add("active")
+      container.classList.add("active")
+    })
+
+    //모바일 내비게이션의 각 링크에 클릭 이벤트를 추가
+    document.querySelectorAll(".mobile_nav > ul > li > a").forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();//기본 링크기능 제거
+        if(deviceStatus === 'mobile'){
+          //클릭한 요소의 다음 형제요소(.sub)를 선택
+          const sub = link.nextElementSibling;
+          //sub의 maxHeight가 0px이면 실행
+          if(getComputedStyle(sub).maxHeight === '0px'){
+            //모든 하위 메뉴를 숨기고
+            subSlideUp();
+            //클릭한 메뉴의 다음형제 요소인sub의 maxHeigt값을 108px로 설정하여 서브메뉴를 펼쳐줍니다
+            sub.style.maxHeight = sub.scrollHeight + "px";
+          }else{//sub의 maxHeigt가 0px이 아니면(sub가 펼쳐져 있을 경우)
+            //sub의 maxHeigt값을 0px로 설정하여 서브메뉴를 접어줍니다
+            subSlideUp();
+          }
+        }
+      })
+    })
+
+    //transparency를 클릭하면 reset함수를 호출하여 상태를 초기화합니다.
+    transparency.addEventListener('click', reset);
+
+    //페이지가 로드될 때 현재의 창 크기에 따라 deviceStatus를 설정하기 위해 리사이즈 이벤트를 강제로 발생시켜야 합니다
+    window.dispatchEvent(new Event("resize"))
+  </script>
+</body>
+
+</html>

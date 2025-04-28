@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>i18next</title>
+  <!--i18next플러그인-->
+  <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
+</head>
+<body>
+  <!--한국어, 영어 선택을 할 수 있는 selector-->
+  <select id="language_select" onchange="i18next.changeLanguage(this.value)">
+    <option value="en">English</option>
+    <option value="ko">Korean</option>
+  </select>
+  <!--웹페이지 텍스트(제목 + 내용)-->
+  <h1 id="title"></h1>
+  <p id="content"></p>
+  <script>
+    //현재의 웹 브라우저에 설정된 언어 확인(만약 한국어라면 true, 아니라면 false)
+    //navigator.language = 현재 브라우저의 언어를 읽어오는 속성
+    const isKorean = navigator.language === "ko"
+
+    //웹 브라우저 언어가 한국어면 select에 한국어 선택, 아닐경우 영어선택
+    if(isKorean){
+      document.querySelector("#language_select")
+      .options[1].setAttribute("selected", true)//두번째 옵션요소에 selected속성을 추가
+    }else{//한국어가 아닐경우
+      document.querySelector("#language_select")
+      .options[0].setAttribute("selected", true)//첫번째 옵션요소에 selected속성을 추가
+    }
+
+    //웹페이지 텍스트 변환을 위한 세팅 init = 초기화
+    i18next.init({
+      lng: isKorean ? "ko" : "en", //한국어인지, 영어인지 표시
+      debug:true,
+      resources : { //웹페이지를 구성하는 텍스트들을 json형태로 입력
+        ko:{
+          translation:{
+            title: "한국어 제목",
+            content: "한국어 내용"
+          }
+        },
+        en:{
+          translation:{
+            title: "English title",
+            content: "English content"
+          }
+        }
+      }
+    },
+    function(err, t){
+      if(err){//에러가 발생할 경우 콘솔에 에러 메시지를 출력시킴
+        console.error(err)
+      }else{//에러가 없을 경우 설정한 언어로 json안의 텍스트들을 대입
+        updateContent();
+      }
+    }
+  )
+
+  function updateContent(){//i18next.init에서 세팅한 텍스트들을 html태그에 대입
+    document.querySelector("#title").innerHTML = i18next.t("title")
+    document.querySelector("#content").innerHTML = i18next.t("content")
+  }
+
+  //언어 변환시 이벤트(위 select에서의 onchange이벤트를 발생시킴)
+  i18next.on("languageChanged", () => {
+    updateContent();//바뀐언어에 따라 웹페이지의 텍스트를 재대입
+  })
+  </script>
+</body>
+</html>

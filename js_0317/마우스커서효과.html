@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마우스를 따라다니는 이미지</title>
+  <style>
+    *{margin:0; padding:0; cursor:none;/*커서 제거*/}
+    body{overflow:hidden;}/*커서이미지가 브라우저 밖으로 나가도 스크롤바가 생기지 않도록 함*/
+    ul{
+      list-style:none;
+      padding:20px 0;
+      display:flex;
+      gap:80px;
+      justify-content: center;
+    }
+
+    #cursor{
+      position:absolute;
+      /*커서요소에 이벤트가 발생되지 않도록 함*/
+      pointer-events: none;
+    }
+
+    #cursor img{
+      display:block;
+      width:50px; height:50px;
+      transition:transform 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <div id="cursor">
+    <img src="images/shuriken.png" alt="마우스커서">
+  </div>
+  <header>
+    <ul class="links">
+      <li><a href="#">메뉴</a></li>
+      <li><a href="#">메뉴</a></li>
+      <li><a href="#">메뉴</a></li>
+      <li><a href="#">메뉴</a></li>
+      <li><a href="#">메뉴</a></li>
+    </ul>
+  </header>
+  <script>
+    //#cursor를 선택
+    const cursor = document.querySelector('#cursor');
+
+    //브라우저 내에서 마우스무브 이벤트 생성
+    addEventListener("mousemove", function(e){
+      //마우스의 x,y좌표값을 변수에 할당
+      //이미지 크기의 절반값만큼 빼줘서 가운데 정렬
+      let x = e.clientX - 25;
+      let y = e.clientY - 25;
+      //마우스의 top,left위치값으로 마우스의 위치값을 대입
+      cursor.style.top = `${y}px`;
+      cursor.style.left = `${x}px`;
+    })
+
+    //링크메뉴들을 NodeList로 선택
+    const links = document.querySelectorAll(".links li");
+    //반복 함수
+    //배열.forEach((배열요소,인덱스) => {실행코드})
+
+    //links배열의 배열요소를 link로 순회하면서 mouseenter이벤트를 생성
+    links.forEach(link => link.addEventListener("mouseenter",() => {
+      //console.log("이벤트 발생")
+      //cursor의 자식요소인 img의 transform속성을 변경
+      cursor.querySelector("img").style.transform = "rotate(180deg)"
+    }))
+
+    //links배열의 배열요소를 link로 순회하면서 mouseleave이벤트를 생성
+    links.forEach(link => link.addEventListener("mouseleave",() => {
+      //마우스가 링크에서 떠나면 커서이미지의 transform을 초기화
+      cursor.querySelector("img").style.transform = "rotate(0deg)"
+    }))
+  </script>
+</body>
+</html>

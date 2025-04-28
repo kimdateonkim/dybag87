@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .on{
+      background-color:red;
+    }
+  </style>
+</head>
+<body>
+  <ul class="tab_menu">
+		<li>공지사항</li>
+		<li>알림마당</li>
+		<li>보도자료</li>
+		<li>채용정보</li>
+	</ul>
+  <div class="tab_list">
+		<ul>
+			<li>공지사항입니다.</li>
+			<li>공지사항입니다.</li>
+			<li>공지사항입니다.</li>
+			<li>공지사항입니다.</li>
+		</ul>
+		<ul>
+			<li>알림마당입니다.</li>
+			<li>알림마당입니다.</li>
+			<li>알림마당입니다.</li>
+			<li>알림마당입니다.</li>
+		</ul>
+		<ul>
+			<li>보도자료입니다.</li>
+			<li>보도자료입니다.</li>
+			<li>보도자료입니다.</li>
+			<li>보도자료입니다.</li>
+		</ul>
+		<ul>
+			<li>채용정보입니다.</li>
+			<li>채용정보입니다.</li>
+			<li>채용정보입니다.</li>
+			<li>채용정보입니다.</li>
+		</ul>
+	</div>
+  <script>
+    //tabmenu의 li요소와 tablist의 ul요소를 NodeList로 선택
+    const tabLi = document.querySelectorAll(".tab_menu > li");
+    const tabList = document.querySelectorAll(".tab_list > ul");
+
+    //선택자.classList.add("클래스명") = 선택자에 인자로 전달된 클래스 추가
+    //선택자.classList.remove("클래스명") = 선택자에 인자로 전달된 클래스 제거
+    //선택자.classList.toggle("클래스명") = 선택자에 인자로 전달된 클래스가 존재하면 제거 존재하지 않으면 추가
+
+    //tabLi에 할당한 모든 li요소에 클릭이벤트를 생성하고 클릭이벤트가 발생하면 클릭한 li에 on클래스를 추가하고 같은 순번인 tabList에도 on클래스를 추가
+    for(let i = 0; i < tabLi.length; i++){
+      tabLi[i].addEventListener("click", () => {
+        tabLi[i].classList.add("on");
+        //탭리스트도 탭메뉴와 같은 순번을 선택하여 on클래스를 추가
+        tabList[i].classList.add("on");
+      })
+    }
+  </script>
+</body>
+</html>

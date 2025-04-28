@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>memu컨셉</title>
+
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        body{
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #fff;
+            color: #333;
+        }
+
+        header{
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            border-bottom: 1px solid #866a6a;
+        }
+
+        .logo{
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul{
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a{
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .hero {
+         background-size: cover;
+         text-align: center;
+         color: rgb(59, 56, 56);
+         padding: 100px 20px;
+        }
+
+        .hero h1{
+            font-size: 48px;
+        }
+
+        .hero p{
+            font-size: 20px;
+            margin: 10px 0 20px;
+        }
+
+        .btn{
+            background-color: #795e67;
+            color: #aaa4a6;
+            padding: 10px 25px;
+            border: none;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .products{
+            padding: 50px;
+            text-align: center;
+        }
+
+        .products-grid{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .products-card{
+            width: 200px;
+            border: 1px solid #725c5c;
+            padding: 15px;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .products-card:hover{
+            transform: scale(1.05);
+        }
+
+        footer{
+            background-color: #795e67;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">DY & BAG</div>
+        <nav>
+            <ul>
+                <li><a href="#">홈</a></li>
+                <li><a href="#">신상품</a></li>
+                <li><a href="#">베스트</a></li>
+                <li><a href="#">카테고리</a></li>
+                <li><a href="#">고객센터</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <scetion class="hero">
+        <h1>당신만을 위한 스타일</h1>
+        <p>트렌디한 아이템, 빛나는</p>
+    </scetion>
+
+    <scetion class="products">
+        <h2>인기 상품</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="images/숄더3.png" alt="상품 1">
+                <h3>숄더백</h3>
+                <p>38,000</p>              
+            </div>
+            <div class="product-card">
+                <img src="images/숄더5.png" alt="상품 1">
+                <h3>숄더백</h3>
+                <p>32,000</p>              
+            </div>
+            <div class="product-card">
+                <img src="images/숄더8.png" alt="상품 1">
+                <h3>숄더백</h3>
+                <p>27,000</p>            
+            </div>
+        </div>
+    </scetion>
+
+    <footer>
+        <p>© 2025 MyShop. All rights reserved.</p>
+    </footer>
+</body>
+</html>

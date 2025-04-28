@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인터벌슬라이드</title>
+  <style>
+    .bigbox{
+      width:400px;
+      height:300px;
+      margin:50px auto;
+      overflow:hidden;/* .bigbox밖으로 넘어간 이미지를 가려줌 */
+    }
+    .box{
+      position:relative;
+      width:1200px;
+      height:300px;
+    }
+    .box img{
+      position:absolute;
+      transition:all 0.5s ease-out;
+    }
+    .box .left0{left:0;}
+    .box .leftPlus400{left:400px; z-index: -1;}
+    .box .leftMinus400{left:-400px;}
+
+  </style>
+</head>
+<body>
+  <div class="bigbox">
+    <div class="box">
+      <img src="images/img1.jpg" class="left0" alt="이미지1">
+      <img src="images/img2.jpg" class="leftPlus400" alt="이미지2">
+      <img src="images/img3.jpg" class="leftPlus400" alt="이미지3">
+      <img src="images/img4.jpg" class="leftPlus400" alt="이미지4">
+    </div>
+  </div>
+  <script>
+    let i = 0;//이미지 순서를 카운트할 변수
+
+    //모든 이미지 요소를 선택
+    const boxImgs = document.querySelectorAll(".box img")
+
+    function slide(){
+      //i가 boxImgs의 갯수와 같으면 i값을 0으로 할당
+      (i === boxImgs.length) && (i = 0)
+      //i가 0~3까지는 좌변이 반환되고 i가 4가되면 우변이 반환되어 i값을 0으로 초기화 시킨다
+      //if(i >= boxImgs.length) i = 0  //같은 의미
+      console.log(i)
+      boxImgs[i].className = 'leftMinus400';
+      //i값을 boxImgs.length로 나머지값을 구해서 0~3사이의 숫자만 나오게 제한
+      boxImgs[(i+1) % boxImgs.length].className = 'left0';
+      boxImgs[(i+2) % boxImgs.length].className = 'leftPlus400';
+      //i값을 1증가시킴
+      i++;
+    }
+    //3초에 한번씩 slide를 반복 호출
+    setInterval(slide, 3000)
+  </script>
+</body>
+</html>

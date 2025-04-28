@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스크롤양표시</title>
+  <style>
+    /*bar를 하늘색으로 설정*/
+    #bar{
+      background-color: #0bd;
+      position:fixed;
+      top:0; left:0;
+      height:10px;
+      /* width:100%; */
+    }
+    article{
+      max-width:800px;
+      margin:auto;
+      padding:2rem;
+      line-height:1.8;
+    }
+    h2{
+      margin:2rem 0 1rem; /*r = root, rem = 최상의 요소를 기준으로 값이 배수로 적용*/
+    }
+  </style>
+  <script>
+    /*모든 리소스가 로드된 후에 자바스크립트 코드를 실행*/
+    window.addEventListener("load", () => {
+      //스크롤 이벤트 생성
+      window.addEventListener("scroll",() => {
+        //스크롤 양
+        const scrolled = window.scrollY;
+  
+        //페이지 전체 높이 = 최대 스크롤 값
+        const pageHeight = document.documentElement.scrollHeight;
+        
+        //clientHeight = padding을 포함한 요소의 높이값
+  
+        //표시 영역 높이
+        const viewHeight = document.documentElement.clientHeight;
+        
+        //console.log(`페이지 높이 : ${pageHeight}, 표시 영역 높이 : ${viewHeight}`)
+  
+        //스크롤양 / (페이지 전체 높이 - 표시 영역 높이) * 100 = 스크롤한 비율
+        const percentage = scrolled / (pageHeight - viewHeight) * 100
+        console.log(percentage)
+  
+        //프로그래스 바의 폭 설정
+        document.querySelector("#bar").style.width = `${percentage}%`;
+      })
+    })
+  </script>
+</head>
+<body>
+  <div id="bar"></div>
+
+  <article>
+    <h1>은하철도의 밤</h1>
+    <p>미야자와 겐지</p>
+
+    <h2>1. 오후 수업</h2>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus itaque placeat et maiores ipsam, ex iste voluptas rem. In dolores beatae placeat pariatur delectus itaque rem nam eligendi voluptates tempora.
+    Asperiores recusandae vero ex laborum laudantium eligendi repudiandae commodi! Reprehenderit ad eligendi vero amet repudiandae similique exercitationem animi a, perferendis incidunt at perspiciatis excepturi voluptatem molestias voluptatibus accusantium aliquid? Porro!
+    Nihil similique, aperiam magnam fuga in atque adipisci. Porro nulla voluptates ipsam. Eos aut fuga vitae dolor cumque fugit nesciunt non nihil exercitationem. Dolorem quos ipsum dolorum tempore fugit saepe.
+    Sed incidunt nihil vero ad? Id laudantium amet pariatur, alias odit cupiditate sequi earum possimus! Pariatur aliquam nisi excepturi nobis impedit, sequi nesciunt quo necessitatibus vero corrupti voluptatibus similique veritatis.
+    Dolore beatae libero culpa corporis tenetur et ipsum natus obcaecati. Soluta itaque quidem ipsam adipisci dolore saepe dolorum! Magni officiis voluptatem aut velit sint asperiores voluptate ab quae, assumenda voluptas.
+    Esse beatae debitis eveniet laudantium sint dignissimos maiores aut perspiciatis odit animi minima facilis vel possimus error nesciunt iusto, laborum fuga sunt? Blanditiis ea distinctio iure dolore! Consequuntur, labore quod!
+    Ab voluptatibus voluptas quibusdam sint omnis. Minus iure, corporis veritatis, necessitatibus, cum quos tenetur earum rem reprehenderit autem inventore aliquam deserunt dolores temporibus laboriosam expedita distinctio. Officia error itaque porro.
+    Beatae eveniet molestias nulla enim hic impedit optio. Libero consequuntur praesentium, aspernatur culpa alias qui molestiae exercitationem vitae odit animi soluta nulla! Eius illo nihil excepturi suscipit nobis beatae vel?
+    Tempore commodi praesentium enim incidunt. Atque necessitatibus culpa molestias quidem tempora ea natus distinctio architecto sapiente quam officiis, modi aliquid. Blanditiis minus debitis accusamus culpa itaque, sed distinctio quo nostrum!
+    Rem, sed sit quibusdam nisi tenetur vitae maiores hic dolor, dolore labore et iure magni minus illo velit ut nulla laboriosam debitis totam ex magnam voluptates repellat! Necessitatibus, harum officiis.</p>
+
+    <h2>2. 활판 인쇄소</h2>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus itaque placeat et maiores ipsam, ex iste voluptas rem. In dolores beatae placeat pariatur delectus itaque rem nam eligendi voluptates tempora.
+    Asperiores recusandae vero ex laborum laudantium eligendi repudiandae commodi! Reprehenderit ad eligendi vero amet repudiandae similique exercitationem animi a, perferendis incidunt at perspiciatis excepturi voluptatem molestias voluptatibus accusantium aliquid? Porro!
+    Nihil similique, aperiam magnam fuga in atque adipisci. Porro nulla voluptates ipsam. Eos aut fuga vitae dolor cumque fugit nesciunt non nihil exercitationem. Dolorem quos ipsum dolorum tempore fugit saepe.
+    Sed incidunt nihil vero ad? Id laudantium amet pariatur, alias odit cupiditate sequi earum possimus! Pariatur aliquam nisi excepturi nobis impedit, sequi nesciunt quo necessitatibus vero corrupti voluptatibus similique veritatis.
+    Dolore beatae libero culpa corporis tenetur et ipsum natus obcaecati. Soluta itaque quidem ipsam adipisci dolore saepe dolorum! Magni officiis voluptatem aut velit sint asperiores voluptate ab quae, assumenda voluptas.
+    Esse beatae debitis eveniet laudantium sint dignissimos maiores aut perspiciatis odit animi minima facilis vel possimus error nesciunt iusto, laborum fuga sunt? Blanditiis ea distinctio iure dolore! Consequuntur, labore quod!
+    Ab voluptatibus voluptas quibusdam sint omnis. Minus iure, corporis veritatis, necessitatibus, cum quos tenetur earum rem reprehenderit autem inventore aliquam deserunt dolores temporibus laboriosam expedita distinctio. Officia error itaque porro.
+    Beatae eveniet molestias nulla enim hic impedit optio. Libero consequuntur praesentium, aspernatur culpa alias qui molestiae exercitationem vitae odit animi soluta nulla! Eius illo nihil excepturi suscipit nobis beatae vel?
+    Tempore commodi praesentium enim incidunt. Atque necessitatibus culpa molestias quidem tempora ea natus distinctio architecto sapiente quam officiis, modi aliquid. Blanditiis minus debitis accusamus culpa itaque, sed distinctio quo nostrum!
+    Rem, sed sit quibusdam nisi tenetur vitae maiores hic dolor, dolore labore et iure magni minus illo velit ut nulla laboriosam debitis totam ex magnam voluptates repellat! Necessitatibus, harum officiis.</p>
+
+    <h2>3. 집</h2>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus itaque placeat et maiores ipsam, ex iste voluptas rem. In dolores beatae placeat pariatur delectus itaque rem nam eligendi voluptates tempora.
+    Asperiores recusandae vero ex laborum laudantium eligendi repudiandae commodi! Reprehenderit ad eligendi vero amet repudiandae similique exercitationem animi a, perferendis incidunt at perspiciatis excepturi voluptatem molestias voluptatibus accusantium aliquid? Porro!
+    Nihil similique, aperiam magnam fuga in atque adipisci. Porro nulla voluptates ipsam. Eos aut fuga vitae dolor cumque fugit nesciunt non nihil exercitationem. Dolorem quos ipsum dolorum tempore fugit saepe.
+    Sed incidunt nihil vero ad? Id laudantium amet pariatur, alias odit cupiditate sequi earum possimus! Pariatur aliquam nisi excepturi nobis impedit, sequi nesciunt quo necessitatibus vero corrupti voluptatibus similique veritatis.
+    Dolore beatae libero culpa corporis tenetur et ipsum natus obcaecati. Soluta itaque quidem ipsam adipisci dolore saepe dolorum! Magni officiis voluptatem aut velit sint asperiores voluptate ab quae, assumenda voluptas.
+    Esse beatae debitis eveniet laudantium sint dignissimos maiores aut perspiciatis odit animi minima facilis vel possimus error nesciunt iusto, laborum fuga sunt? Blanditiis ea distinctio iure dolore! Consequuntur, labore quod!
+    Ab voluptatibus voluptas quibusdam sint omnis. Minus iure, corporis veritatis, necessitatibus, cum quos tenetur earum rem reprehenderit autem inventore aliquam deserunt dolores temporibus laboriosam expedita distinctio. Officia error itaque porro.
+    Beatae eveniet molestias nulla enim hic impedit optio. Libero consequuntur praesentium, aspernatur culpa alias qui molestiae exercitationem vitae odit animi soluta nulla! Eius illo nihil excepturi suscipit nobis beatae vel?
+    Tempore commodi praesentium enim incidunt. Atque necessitatibus culpa molestias quidem tempora ea natus distinctio architecto sapiente quam officiis, modi aliquid. Blanditiis minus debitis accusamus culpa itaque, sed distinctio quo nostrum!
+    Rem, sed sit quibusdam nisi tenetur vitae maiores hic dolor, dolore labore et iure magni minus illo velit ut nulla laboriosam debitis totam ex magnam voluptates repellat! Necessitatibus, harum officiis.</p>
+
+    <h2>4. 켄타우루 축제의 밤</h2>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus itaque placeat et maiores ipsam, ex iste voluptas rem. In dolores beatae placeat pariatur delectus itaque rem nam eligendi voluptates tempora.
+    Asperiores recusandae vero ex laborum laudantium eligendi repudiandae commodi! Reprehenderit ad eligendi vero amet repudiandae similique exercitationem animi a, perferendis incidunt at perspiciatis excepturi voluptatem molestias voluptatibus accusantium aliquid? Porro!
+    Nihil similique, aperiam magnam fuga in atque adipisci. Porro nulla voluptates ipsam. Eos aut fuga vitae dolor cumque fugit nesciunt non nihil exercitationem. Dolorem quos ipsum dolorum tempore fugit saepe.
+    Sed incidunt nihil vero ad? Id laudantium amet pariatur, alias odit cupiditate sequi earum possimus! Pariatur aliquam nisi excepturi nobis impedit, sequi nesciunt quo necessitatibus vero corrupti voluptatibus similique veritatis.
+    Dolore beatae libero culpa corporis tenetur et ipsum natus obcaecati. Soluta itaque quidem ipsam adipisci dolore saepe dolorum! Magni officiis voluptatem aut velit sint asperiores voluptate ab quae, assumenda voluptas.
+    Esse beatae debitis eveniet laudantium sint dignissimos maiores aut perspiciatis odit animi minima facilis vel possimus error nesciunt iusto, laborum fuga sunt? Blanditiis ea distinctio iure dolore! Consequuntur, labore quod!
+    Ab voluptatibus voluptas quibusdam sint omnis. Minus iure, corporis veritatis, necessitatibus, cum quos tenetur earum rem reprehenderit autem inventore aliquam deserunt dolores temporibus laboriosam expedita distinctio. Officia error itaque porro.
+    Beatae eveniet molestias nulla enim hic impedit optio. Libero consequuntur praesentium, aspernatur culpa alias qui molestiae exercitationem vitae odit animi soluta nulla! Eius illo nihil excepturi suscipit nobis beatae vel?
+    Tempore commodi praesentium enim incidunt. Atque necessitatibus culpa molestias quidem tempora ea natus distinctio architecto sapiente quam officiis, modi aliquid. Blanditiis minus debitis accusamus culpa itaque, sed distinctio quo nostrum!
+    Rem, sed sit quibusdam nisi tenetur vitae maiores hic dolor, dolore labore et iure magni minus illo velit ut nulla laboriosam debitis totam ex magnam voluptates repellat! Necessitatibus, harum officiis.</p>
+  </article>
+</body>
+</html>

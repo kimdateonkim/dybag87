@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>시계만들기</title>
+  <style>
+    .frame{
+      display:inline-block;
+      padding:8px;
+      border-radius: 8px;
+      background-color:#000;
+    }
+    .clock{
+      color:#fff;
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .large_text{
+      font-size:75px;
+    }
+    .small_text{
+      font-size:20px;
+    }
+    .date_box{font-size:15px;}
+    .colon{
+      font-size:55px;
+      vertical-align: text-bottom;
+      /*step-start를 적용하면 결과적으로 깜빡이는 애니메이션을 적용할 수 있습니다*/
+      animation: blink 1s step-start infinite;
+    }
+    @keyframes blink {
+      /* 0%{opacity:1;} */
+      50%{
+        opacity:0;
+      }
+      /* 100%{opacity:1;} */
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="clock">
+      <div class="time_box">
+        <span id="hours" class="large_text"></span>
+        <span class="colon">:</span>
+        <span id="minute" class="large_text"></span>
+        <span id="seconds" class="small_text"></span>
+      </div>
+      <div class="date_box">
+        <span id="year"></span>
+        <span>.</span>
+        <span id="month"></span>
+        <span>.</span>
+        <span id="date"></span>
+        <span id="day"></span>
+      </div>
+    </div>
+  </div>
+  <script>
+    //watchClock함수 생성
+    const watchClock = () => {
+      //숫자가 한자리일때 앞에 0을 붙이는 함수
+      function leftPad(number){
+        //number가 10 미만이면 number앞에 0을 붙여서 반환
+        if(number < 10) return `0${number}`
+        //10이상이면 number를 반환
+        return number;
+      }
+      //인자값으로 selector(선택자)를 전달받고 text(요소안에 넣어줄 글자 내용)을 전달받아서 선택요소에 내용을 채워넣는 함수
+      function setText(selector, text){
+        //전달받은 selector매개변수로 선택자를 만들어 줍니다.
+        const targetElement = document.querySelector(selector);
+        //선택자가 없으면 함수를 종료
+        if(!targetElement) return;
+        //선택된 요소에 텍스트로 전달받은 text매개변수 값을 할당
+        targetElement.textContent = text;
+      }
+
+      //날짜 정보를 preset에 저장
+      const preset = new Date();
+      //preset에서 현재 시,분,초 정보를 각 변수에 할당
+      //laftPad함수의 인자로 시,분,초 정보를 전달하여 값이 한자리 숫자일때 앞에 0을 붙여서 반환받음
+      const hour = leftPad(preset.getHours());
+      const minute = leftPad(preset.getMinutes());
+      const seconds = leftPad(preset.getSeconds());
+      //console.log(hour, minute, seconds)
+
+      //setText함수의 인자로 선택자와 시간, 분, 초 정보를 전달하여 시간을 표시
+      setText("#hours", hour);
+      setText("#minute", minute);
+      setText("#seconds", seconds);
+
+      const year = preset.getFullYear() //현재 년도를 저장
+      const month = leftPad(preset.getMonth()+1); //현재 달 정보를 저장, 1월이 0이므로 +1을 해서 1월을 표시
+      const date = leftPad(preset.getDate()) //현재 날짜를 저장
+      const day = preset.getDay(); //현재 요일을 day에 저장
+
+      //setText함수의 인자로 선택자와 년도, 월, 일, 요일 정보를 전달하여 날짜정보를 표시
+      setText("#year", year);
+      setText("#month", month);
+      setText("#date", date);
+
+      //요일정보 구하기
+      const weekday = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
+      setText("#day", weekday[day]);
+    }
+    watchClock()
+    //setInterval로 watchClock함수를 1초에 한번씩 반복 호출
+    setInterval(watchClock, 1000);
+  </script>
+</body>
+</html>

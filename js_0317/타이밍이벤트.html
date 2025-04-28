@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>타이밍 이벤트</title>
+  <style>
+    #box{
+      position:relative;
+      height:200px;
+      background:orange;
+    }
+    #box > div{
+      position:absolute;
+      width:50px;
+      height:50px;
+      background-color:black;
+      border-radius: 50%;
+      top:75px;
+      left:0;
+      cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <div></div>
+  </div>
+  <script>
+    //비동기함수(setTimeout) 담을 변수
+    let myTimeout;
+    //비동기함수의 호출을 제어할 변수
+    let flag = false;
+
+    //div요소에 클릭이벤트 생성
+    document.querySelector("#box > div").addEventListener("click", function(){
+      console.log(this) //클릭이벤트가 발생한 요소
+      //클릭한 div요소의 left값을 0으로 설정
+      this.style.left = 0;
+      //flag가 true일때만 실행
+      flag = !flag;//flag의 값을 반전시킴(true => flase, flase => true)
+      doMove(this);//doMove함수를 호출 인자로 클릭한 div를 전달
+    })
+
+    function doMove(obj){ //doMove함수에서 obj매개변수로 인자를 받음
+      if(flag){//flag가 true일 경우 실행
+        //left값을 현재 값에서 10px만큼 증가
+        obj.style.left = parseInt(obj.style.left) + 10 + "px"
+
+        //doMove함수를 0.25뒤에 호출 이때 obj매개변수를 전달(재귀 함수)
+        myTimeout = setTimeout(doMove, 250, obj)
+      }else{
+        //flag가 false면 clearTimeout으로 setTimeout을 종료
+        clearTimeout(myTimeout)
+      }
+    }
+  </script>
+</body>
+</html>

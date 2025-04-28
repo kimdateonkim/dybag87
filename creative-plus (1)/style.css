@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Katibeh&family=Nanum+Gothic&display=swap');
+
+*{margin:0; padding:0;}
+ul{list-style:none;}
+a{text-decoration: none;}
+::placeholder{/*placeholder 초기화*/
+  font-family: "Nanum Gothic";
+  color:#666;
+}
+
+body{
+  font-family: "Nanum Gothic", Georgia;
+  font-size:14px;
+  color:#111;
+}
+/*공통속성*/
+.container{
+  width:1000px;
+  margin:auto;
+  box-sizing:border-box;
+  padding:100px 20px;
+}
+
+/*header*/
+header{
+  min-width:1000px;
+  background-color: #fff;
+  box-shadow:0 1px 2px rgba(0,0,0,0.2);
+}
+header > .container{
+  padding:24px 10px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo{
+  font-family: "Katibeh";
+  font-size:42px;
+  height:20px;
+  transform:translateY(-24px);
+  letter-spacing: 2px;
+}
+.logo a{color:#111;}
+
+nav{
+  display:flex;
+  gap:20px;
+}
+nav > .gnb{
+  display:flex;
+  gap:40px;
+  transform: translateY(3px);
+}
+nav .gnb a{
+  color:#333;
+}
+/*메뉴 활성화*/
+nav .gnb .active a{
+  color:orange;
+  font-weight: bold;
+}
+nav > .icon{
+  display:flex;
+  gap:10px;
+}
+nav .icon a{
+  color:#333;
+  font-size:20px;
+}
+
+/*배너*/
+#banner{
+  min-width:1000px;
+  height:600px;
+  background:url(images/main.jpg) center/cover;
+}
+#banner h1{
+  font-family: Georgia, "Nanum Gothic";
+  color:#fff;
+  font-size:60px;
+  font-weight: normal;
+}
+#banner h1 i{
+  color:orange;
+  padding-left:20px;
+}
+#banner h2{
+  color:#fff;
+  font-size:30px;
+  margin-bottom:40px;
+}
+
+#banner .btn a{
+  display:inline-block;
+  box-sizing: border-box;
+  padding:8px 34px;
+  margin-right:10px;
+  /*inset(요소안쪽으로 그림자적용) x축 y축 blur 확장값 색상*/
+  box-shadow:inset 0 0 0 2px #fff;
+  color:#fff;
+  font-weight: bold;
+  position:relative;
+  transition:color 0.25s;/*color속성이 변경되면 0.25초동안 변경*/
+}
+
+#banner .btn a::before,
+#banner .btn a::after{
+  content:"";
+  box-sizing: border-box;
+  position:absolute;
+  border:2px solid transparent;
+  width:0; height:0;
+}
+#banner .btn a::before{/*위치를 왼쪽 상단으로 정렬*/
+  top:0; left:0;
+}
+#banner .btn a::after{/*위치를 오른쪽 하단으로 정렬*/
+  bottom:0; right:0;
+}
+/*hover 시*/
+#banner .btn a:hover{color:orange;}
+
+#banner .btn a:hover::before,
+#banner .btn a:hover::after{
+  width:100%;
+  height:100%;
+}
+#banner .btn a:hover::before{
+  border-top-color:orange;
+  border-right-color:orange;
+  transition:width 0.25s ease-out, height 0.25s ease-out 0.25s;
+}
+
+#banner .btn a:hover::after{
+  border-bottom-color:orange;
+  border-left-color:orange;
+  transition:border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
+}
+
+/*works*/
+#works{
+  min-width:1000px;
+  background-color:orange;
+}
+#works > .container{
+  width:800px;
+  padding:100px 0;/*좌우 여백 제거*/
+  display:flex;
+}
+#works .box{
+  width:200px;
+  text-align: center;
+}
+#works .box img{
+  border-radius: 50%;
+}
+#works .box h3{
+  margin-top:20px;
+}
+
+/*about*/
+#about h1{
+  font-family: Georgia, "Nanum Gothic", sans-serif;
+  font-size:60px;
+}
+#about h1 i{
+  margin-right:20px;
+}
+
+#about .container > p{
+  font-size:18px;
+  text-indent:70px;
+}
+
+#about .member{
+  display:flex;
+  margin:60px 0;
+  justify-content: space-around;
+  text-align: center;
+}
+#about .member h3{
+  font-size:14px;
+  margin:20px 0 5px;
+  letter-spacing: 6px;
+}
+#about .member p{
+  color:#666;
+  letter-spacing: 2px;
+}
+#about .txt{
+  display:flex;
+}
+#about .txt p{
+  padding:0 20px;
+  text-align: justify;
+  color:#666;
+}
+
+/*contact*/
+#contact{
+  min-width:1000px;
+  background-color:#333;
+  color:#fff;
+}
+
+#contact h1{
+  font-family: Georgia, "Nanum Gothic", sans-serif;
+  font-size:60px;
+}
+#contact h1 i{
+  margin-right:20px;
+}
+
+#contact .container > p{
+  font-size:18px;
+  text-indent:70px;
+}
+
+#contact .contact-wrap{
+  display:flex;
+  margin-top:80px;
+}
+#contact .contact-wrap > div{
+  width:50%;
+}
+
+#contact .contact-wrap .address{
+  box-sizing: border-box;
+  padding:0 70px;
+}
+
+#contact .contact-wrap .address p{
+  margin-bottom:40px;
+  line-height:40px;
+}
+
+#contact .contact-wrap .address p i{
+  font-size:35px;
+  vertical-align: middle;
+  margin-right:10px;
+}
+#contact .contact-wrap .address iframe{
+  width:100%;
+}
+
+#contact .contact-input label{
+  line-height:1.7;
+}
+
+#contact .contact-input .wrap{
+  display:flex;
+  justify-content: space-between;
+}
+#contact .contact-input .wrap p{
+  width:235px;
+}
+
+#contact .contact-input .wrap textarea{
+  width:240px;
+  height:130px;
+  border:none;
+  outline:none;
+  padding:10px;
+  box-sizing: border-box;
+}
+
+input[type=text]{/*type속성이 text인 input을 선택*/
+  width:100%;
+  height:40px;
+  box-sizing: border-box;
+  margin-bottom:5px;
+  border:none;
+  outline:none;
+  padding:10px;
+}
+
+input[type=submit]{
+  padding:6px 24px;
+  border:none;
+  outline:none;
+  background-color:orange;
+  color:#fff;
+  font-weight: bold;
+  font-size:14px;
+  cursor:pointer;
+}
+input[type=submit]:hover{
+  background-color:rgb(237, 154, 1);
+}
+#contact hr{
+  border:1px solid #fff;
+  margin:50px 0;
+}
+
+/*footer*/
+footer > .container{
+  padding:30px 20px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer p{
+  padding-left:70px;
+}
+footer span{
+  margin-right:30px;
+}
+footer p a{
+  background-color:#ff9;
+}
+
+footer .icon{
+  display:flex;
+  gap:10px;
+}
+footer .icon a{
+  color:#333;
+  font-size:20px;
+}

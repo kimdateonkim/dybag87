@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>시간별 테마변경</title>
+  <!--폰트어썸 CDN-->
+  <script src="https://kit.fontawesome.com/632d3e2496.js" crossorigin="anonymous"></script>
+  <!--외부정의 css-->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <!--전체 프레임-->
+  <div id="wrap" class="night">
+    <!--전체 화면 구름-->
+    <img src="img/cloud1.png">
+    <img src="img/cloud2.png">
+    <!--로고(배경이미지로 설정)-->
+    <h1 class="logo">logo</h1>
+    
+    <!--주 메뉴-->
+    <ul id="gnb">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Company</a></li>
+      <li><a href="#">History</a></li>
+      <li><a href="#">Community</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <!--sns 버튼-->
+    <ul id="sns">
+      <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+      <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+    </ul>
+    <!--텍스트 박스-->
+    <article>
+      <p><strong>Lorem</strong> Ipsum</p>
+      <em>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta aliquid</em>
+    </article>
+
+    <!--모바일 프레임-->
+    <figure>
+      <p>
+        <!--시계-->
+        <span>00</span>:<span>00</span>:<span>00</span>
+        <!-- 모바일 화면 구름-->
+        <img class="cl1" src="img/cloud1.png">
+        <img class="cl2" src="img/cloud2.png">
+      </p>
+    </figure>
+    <!--테마버튼-->
+    <nav>
+      <ul>
+        <li><a href="#">morning</a></li>
+        <li><a href="#">afternoon</a></li>
+        <li><a href="#">evening</a></li>
+        <li><a href="#">night</a></li>
+      </ul>
+    </nav>
+  </div><!--#wrap END-->
+  <script>
+    //숫자가 한자리일때 앞에 0을 붙이는 함수
+    function leftPad(number){
+      //number가 10 미만이면 number앞에 0을 붙여서 반환
+      if(number < 10) return `0${number}`
+      //10이상이면 number를 반환
+      return number;
+    }
+
+    //현재 시간을 표시하는 함수
+    function watchClock(){
+      //현재 시간 데이터를 now에 저장
+      const now = new Date()
+      
+      //각각 변수에 시,분,초 값을 구해서 할당
+      //leftPad의 인자로 전달하여 한자리 숫자일 때 숫자앞에 0을 붙여 반환 받습니다
+      const hr = leftPad(now.getHours());
+      const min = leftPad(now.getMinutes());
+      const sec = leftPad(now.getSeconds());
+
+      //시,분,초를 적용할 span요소를 선택
+      const span = document.querySelectorAll("figure span");
+      //각각 span요소에 시,분,초를 textContent로 넣어줍니다
+      span[0].textContent = hr; //(hr % 12) || 12 = 1~12시 사이만 출력
+      span[1].textContent = min;
+      span[2].textContent = sec;
+    }
+    //watchClock함수 실행
+    watchClock();
+    //1초에 한번씩 현재 시간을 표시하는 구문
+    setInterval(watchClock,1000)
+
+
+    //시간에 따라 테마 변경
+    const wrap = document.querySelector("#wrap");
+    const navLi = document.querySelectorAll("nav li");
+    const hr = new Date().getHours();//시간만 필요하므로 현재 시간을 구해줍니다
+    //console.log(hr)
+    if(hr >= 5 && hr < 11){//현재 시간이 5시보다 같거나 크고, 11시보다 작을 때(morning)
+      wrap.className = '';//먼저 적용된 class를 모두 제거하고
+      wrap.className = 'morning';//morning클래스를 추가
+      //모든 테마메뉴에 클래스를 제거하고
+      navLi.forEach(li => li.className = "")
+      //첫번째 테마메뉴에 on클래스를 추가
+      navLi[0].className = "on"
+    }else if(hr >= 11 && hr < 16){//현재 시간이 11시보다 같거나 크고, 16시보다 작을 때(afternoon)
+      wrap.className = '';//먼저 적용된 class를 모두 제거하고
+      wrap.className = 'afternoon';//afternoon클래스를 추가
+      //모든 테마메뉴에 클래스를 제거하고
+      navLi.forEach(li => li.className = "")
+      //두번째 테마메뉴에 on클래스를 추가
+      navLi[1].className = "on"
+    }else if(hr >= 16 && hr < 20){//현재 시간이 16시보다 같거나 크고, 20시보다 작을 때(evening)
+      wrap.className = '';//먼저 적용된 class를 모두 제거하고
+      wrap.className = 'evening';//evening클래스를 추가
+      //모든 테마메뉴에 클래스를 제거하고
+      navLi.forEach(li => li.className = "")
+      //세번째 테마메뉴에 on클래스를 추가
+      navLi[2].className = "on"
+    }else if(hr >= 20 || hr < 5){//현재 시간이 20시보다 같거나 크고, 5시보다 작을 때(night)
+      wrap.className = '';//먼저 적용된 class를 모두 제거하고
+      wrap.className = 'night';//night클래스를 추가
+      //모든 테마메뉴에 클래스를 제거하고
+      navLi.forEach(li => li.className = "")
+      //네번째 테마메뉴에 on클래스를 추가
+      navLi[3].className = "on"
+    }
+
+    //테마 버튼 클릭시 화면 테마 변경
+    //모든 li요소를 순회하면서 클릭 이벤트 생성
+    navLi.forEach(li => li.addEventListener("click",() => {
+      // 클릭한 li요소의 자식요소인 a요소를 선택하여 textContent를 변수에 할당합니다(선택자)
+      // children = htmlCollection인 유사배열로 요소를 가져오기때문에 배열선택자로 요소를 선택해줘야 합니다
+      const classChange = li.children[0].textContent
+      console.log(classChange)
+      wrap.className = "";//먼저 적용된 클래스를 제거
+      wrap.className = classChange;//클릭한 요소의 자식인 a요소의 textContent로 클래스이름을 적용
+      navLi.forEach(li => li.className = "")//모든 li요소에 클래스 제거
+      li.className = "on";//클릭한 li요소에 on클래스를 추가
+    }))
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>동적바인딩</title>
+  <!--vuejs CDN-->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!--v-bind를 사용하여 동적인 값을 바인딩할 수 있습니다-->
+    <label>
+      <input 
+        type="checkbox"
+        v-model="toggled"
+        v-bind:true-value="trueValue"
+        v-bind:false-value="falseValue"
+      />{{toggled}}
+    </label>
+
+    <br>
+
+    <!--아래 예제에서 pick은 첫번째 라디오 입력이 확인되면 first값으로 설정되고 두번째 라디오 입력이 확인되면 second값으로 설정됩니다-->
+    <input type="radio" v-model="pick" v-bind:value="first" />
+    <input type="radio" v-model="pick" v-bind:value="second" />
+    <span>{{ pick }}</span>
+
+    <br>
+
+    <!--v-model은 문자열이 아닌 값의 바인딩도 지원합니다, 예제에서 옵션이 선택되면 selected는{number: 123}객체 값으로 설정됩니다-->
+    <select v-model="selectedNum">
+      <!--인라인 객체 리터럴-->
+      <option v-bind:value="{number: 123}">123</option>
+    </select>
+    <span>{{selectedNum}}</span>
+  </div>
+  <script>
+    const app = {
+      data(){
+        return {
+          toggled: "",
+          trueValue: "그렇습니다",
+          falseValue: "아닙니다",
+          pick: "",
+          first: '첫번째',
+          second: '두번째',
+          selectedNum:0,
+        }
+      }
+    }
+    Vue.createApp(app).mount("#app")
+  </script>
+</body>
+</html>

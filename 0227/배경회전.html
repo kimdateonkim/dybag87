@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배경회전</title>
+  <style>
+    .box{
+      outline: 1px solid red;
+      width:400px;
+      height:300px;
+      position:relative;/*pos:abs적용한 자손요소의 기준이 됨*/
+      /*컨텐츠 가운데 정렬용*/
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      /*====================*/
+      margin:50px auto;
+      overflow:hidden;
+    }
+    .rotate{
+      position:absolute;
+      width:500px;
+      height:500px;
+      /*linear-gradient(각도, 색상 위치, 색상 위치)*/
+      background:linear-gradient(0deg, gold 1%, tomato 100%);
+      animation:spin 4s linear infinite;
+      /* left:50%;
+      top:50%;
+      transform:translate(-50%, -50%); */
+    }
+    .box > img{
+      position:relative;
+      z-index:1;
+    }
+    /*키프레임 생성*/
+    @keyframes spin {
+      0%{transform:rotate(0deg)}
+      100%{transform:rotate(360deg)}
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="rotate"></div>
+    <img src="images/logo.png" alt="logo">
+  </div>
+</body>
+</html>

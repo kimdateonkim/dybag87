@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-on</title>
+  <!--vuejs CDN-->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <!--템플릿 구문 이외에도 다음과 같은 방법으로 엘리먼트 속성에 데이터를 바인딩(연결)할 수 있습니다-->
+  <div id="app">
+    <img v-bind:src="imgSrc"/>
+    <input type="text" v-bind:placeholder="message" />
+    <hr>
+    <!--v-on디렉티브로 클릭이벤트를 생성하고 hello메서드를 호출-->
+    <button type="button" v-on:click="hello">click</button>
+    <button type="button" v-on:click="reverseMessage">reverseMessage</button>
+    <hr>
+    {{username}}
+    <input type="text" v-bind:value="username" />
+  </div>
+  <script>
+    const app = {
+      data() {
+        return {
+          //상태값으로 imgSrc, message속성을 선언
+          imgSrc: "https://kr.vuejs.org/images/logo.png",
+          message: "값을 입력해주세요",
+          //username상태값을 추가(input의 value값과 바인딩)
+          username: "홍길동"
+        }
+      },
+      methods:{
+        //hello메서드를 정의하여 경고창을 출력
+        hello(){
+          alert("Hello~!")
+        },
+        reverseMessage(){ // message값을 반전시켜주는 메서드
+          this.message = this.message
+            .split("") //글자를 쪼개고
+            .reverse() //반전 시키고
+            .join("") //글자를 다시 결합
+        }
+      }
+    }
+    Vue.createApp(app).mount("#app")
+  </script>
+</body>
+</html>

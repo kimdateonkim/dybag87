@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .tabWrap {
+      width: 800px;
+      margin: 50px auto;
+    }
+
+    .tabWrap .tab_menu {
+      display: flex;
+      list-style: none;
+    }
+
+    .tabWrap .tab_menu li {
+      width: 20%;
+      text-align: center;
+      margin-right: 2px;
+      padding: 10px 0;
+      color: #fff;
+      background: #aa7575;
+      text-decoration: none;
+      cursor:pointer;
+    }
+
+    .tabWrap .tab_menu li.on {
+      background: #df2e2e;
+      color: #f3e40c;
+    }
+
+    .tab_list {
+      border: 1px solid #999;
+      padding: 20px;
+      height: 160px;
+      box-sizing: border-box;
+    }
+
+    .tab_list>div {
+      display: none;
+    }
+
+    .tab_list>div.on {
+      display: block;
+    }
+
+    .tab_list>div h2 {
+      margin-bottom: 10px;
+    }
+
+    .tab_list>div p {
+      color: #05149e;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tabWrap">
+    <ul class="tab_menu">
+      <li class="on">menu 1</li>
+      <li>menu 2</li>
+      <li>menu 3</li>
+    </ul>
+    <div class="tab_list">
+      <div class="on">
+        <h2>menu1</h2>
+        <p> 01.Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, eius eum iste est placeat qui deleniti
+          sed doloribus, eaque necessitatibus molestias nihil accusantium dolores aut vitae! Doloremque consectetur eius
+          modi! </p>
+      </div>
+      <div>
+        <h2>menu2</h2>
+        <p> 02.Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, eius eum iste est placeat qui deleniti
+          sed doloribus, eaque necessitatibus molestias nihil accusantium dolores aut vitae! Doloremque consectetur eius
+          modi! </p>
+      </div>
+      <div>
+        <h2>menu3</h2>
+        <p> 03.Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, eius eum iste est placeat qui deleniti
+          sed doloribus, eaque necessitatibus molestias nihil accusantium dolores aut vitae! Doloremque consectetur eius
+          modi! </p>
+      </div>
+    </div>
+  </div>
+  <script>
+    //배열.forEach(콜백함수) = 배열을 순회하며 반복 실행하는 함수
+    //콜백함수 = (현재 순회중인 요소, 순회중인 요소의 index) => {실행코드}
+
+    //버튼요소와 리스트요소들을 모두 선택
+    const tabMenu = document.querySelectorAll(".tab_menu > li");
+    const tabList = document.querySelectorAll(".tab_list > div");
+
+    //모든 버튼에 클릭 이벤트 생성
+    tabMenu.forEach((element, index) => {
+      element.addEventListener("click", () => {
+        //모든 버튼요소와 모든 리스트에 on클래스를 제거
+        tabMenu.forEach((el, idx) => {
+          el.classList.remove("on");
+          tabList[idx].classList.remove("on");
+        })
+
+        element.classList.add("on");
+        //클릭한 버튼요소와 같은 순번의 리스트에 on클래스를 추가
+        tabList[index].classList.add("on");
+      })
+    })
+  </script>
+</body>
+
+</html>

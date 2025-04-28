@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다운메뉴</title>
+  <style>
+    *{margin:0; padding:0; box-sizing: border-box;}
+    ul,li{list-style:none;}
+    a{text-decoration: none;}
+
+    header{
+      width:1200px;
+      margin:auto;
+      height:150px;
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      padding:0 20px;
+    }
+
+    header ul#gnb{
+      display:flex;
+    }
+    #gnb > li{
+      position:relative;
+      background-color:rgba(255,255,255,0.7);
+    }
+    #gnb > li > a{
+      display:block;
+      width:200px;
+      line-height:40px;
+      text-align: center;
+      color:#333;
+      transition:all 0.5s;
+    }
+    #gnb > li:hover > a{
+      background-color:green;
+      color:#fff;
+    }
+
+    .sub{
+      position:absolute;
+      background-color:rgba(255,255,255,0.7);
+      width:100%;
+      text-align: center;
+
+      /*서브메뉴를 화면에서 가려놓음*/
+      max-height:0px;
+      overflow:hidden;
+      transition: max-height .3s ease-out;
+    }
+    .sub a{
+      display:block;
+      line-height:40px;
+      color:#333;
+    }
+    .sub li:hover a{
+      background-color:darkgreen;
+      color:#fff;
+    }
+
+    .slide{
+      width:1200px;
+      margin:auto;
+      height:300px;
+      overflow:hidden;
+    }
+    .slide img{
+      width:100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="logo">
+      <img src="images/logo.png" alt="logo" width="220">
+    </h1>
+    <ul id="gnb">
+      <li>
+        <a href="#">MainMenu1</a>
+        <ul class="sub">
+          <li><a href="#">SubMenu1</a></li>
+          <li><a href="#">SubMenu2</a></li>
+          <li><a href="#">SubMenu3</a></li>
+          <li><a href="#">SubMenu4</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">MainMenu2</a>
+        <ul class="sub">
+          <li><a href="#">SubMenu1</a></li>
+          <li><a href="#">SubMenu2</a></li>
+          <li><a href="#">SubMenu3</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">MainMenu3</a>
+        <ul class="sub">
+          <li><a href="#">SubMenu1</a></li>
+          <li><a href="#">SubMenu2</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">MainMenu4</a>
+        <ul class="sub">
+          <li><a href="#">SubMenu1</a></li>
+          <li><a href="#">SubMenu2</a></li>
+          <li><a href="#">SubMenu3</a></li>
+          <li><a href="#">SubMenu4</a></li>
+          <li><a href="#">SubMenu5</a></li>
+        </ul>
+      </li>
+    </ul>
+  </header>
+
+  <section>
+    <article class="slide">
+      <img src="images/images.jpg" alt="slideImg">
+    </article>
+  </section>
+
+  <script>
+    const gnbLi = document.querySelectorAll("#gnb > li");
+
+    //for of문 = for 배열요소 of 배열
+    for(const item of gnbLi){//모든 #gnb > li요소를 item으로 순회하면서 실행
+      //li요소에 마우스를 올려놨을 때 실행
+      item.addEventListener("mouseenter", () => {
+        //이벤트가 발생한 li요소의 마지막 자식요소인 .sub의 scrollHeight값을 max-heigth값으로 적용
+        //scrollHeight = 안보이는 (자식)컨텐츠의 높이
+        item.lastElementChild.style.maxHeight = item.lastElementChild.scrollHeight + "px";
+      })
+      //li요소에서 마우스가 떠났을 때 실행
+      item.addEventListener("mouseleave", () => {
+        //이벤트가 발생한 li요소의 마지막 자식요소인 .sub의 scrollHeight값을 0px로 변경하여 접어줍니다
+        item.lastElementChild.style.maxHeight = '0px';
+      })
+    }
+
+  </script>
+</body>
+</html>

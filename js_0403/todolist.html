@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <style>
+    *{box-sizing: border-box;}
+    ul{margin:0; padding:0;}
+
+    #myUl li{
+      cursor:pointer;
+      position:relative;
+      padding:12px 8px 12px 40px;
+      background:#eee;
+      font-size:18px;
+      user-select: none;
+      transition: 0.2s;
+    }
+    /*모든 홀수 항목을 다른 색상으로 설정*/
+    #myUl li:nth-child(odd){
+      background:#f9f9f9;
+    }
+    /*마우스 오버시 더 어두운 배경색*/
+    #myUl li:hover{
+      background:#ddd;
+    }
+    /*클릭하면 배경색을 추가하고 텍스트에 취소선을 긋습니다*/
+    #myUl li.checked{
+      background:#888;
+      color:#fff;
+      text-decoration: line-through;
+    }
+
+    /*클릭 시 체크 표시 추가*/
+    #myUl li.checked::before{
+      content:'';
+      position:absolute;
+      border-color:#fff;
+      border-style:solid;
+      border-width:0 2px 2px 0;
+      width:7px; height:15px;
+      top:14px; left:14px;
+      transform:rotate(45deg);
+    }
+    /*x버튼(자바스크립에서 생성)*/
+    .close{
+      position:absolute;
+      right:0; top:0;
+      padding:12px 16px;
+    }
+    .close:hover{
+      background-color:#f44336;
+      color:#fff;
+    }
+
+    .header{
+      background-color:#f44336;
+      padding:30px 40px;
+      color:#fff;
+      text-align: center;
+    }
+    .header > .wrap{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+    }
+    input{
+      margin:0;
+      border:none;
+      outline:none;
+      width:75%;
+      padding:10px;
+      font-size:16px;
+    }
+
+    .addBtn{
+      border:none;
+      padding:10px;
+      width:25%;
+      background:#d9d9d9;
+      color:#555;
+      font-size:16px;
+      cursor:pointer;
+      transition: 0.3s;
+    }
+    .addBtn:hover{
+      background-color:#bbb;
+    }
+  </style>
+</head>
+<body>
+  <div id="myDiv" class="header">
+    <h2>My To Do List</h2>
+    <div class="wrap">
+      <input type="text" id="myInput" placeholder="Title...">
+      <button type="button" class="addBtn">Add</button>
+    </div>
+  </div>
+  <ul id="myUl">
+    <li>운동하기</li>
+    <li class="checked">책읽기</li>
+    <li>장보기</li>
+  </ul>
+  <script>
+    //닫기 버튼을 만들고 각 목록에 추가
+    //모든 li요소를 선택
+    const myList = document.querySelectorAll("#myUl > li")
+    //li요소를 순환하면서 addCloseBtn함수를 호출 이때 인자로 list(해당 순번의 li요소)를 전달
+    myList.forEach(list => addCloseBtn(list));
+
+    function addCloseBtn(list){//모든 li요소를 순환하면서 list로 전달 받음
+      const span = document.createElement("span");//span요소 생성
+      const txt = document.createTextNode("\u00d7");//txt변수에 x를 텍스트노드로 저장
+      span.setAttribute("class", "close") //close클래스 적용
+      span.appendChild(txt) //span요소에txt에 담겨진 텍스트노드를 넣어줌
+      list.appendChild(span)//li요소에 span요소를 추가하여 닫기 버튼 생성
+    }
+
+    //닫기 버튼을 클릭하면 현재 항목을 숨깁니다.
+    const closeBtns = document.querySelectorAll(".close")
+
+    closeBtns.forEach(btn => closeEvent(btn))//forEach문으로 close버튼을 순환하면서 closeEvent함수를 호출 인자로 close버튼을 전달
+
+    function closeEvent(btn){//closeEvent함수 생성 close버튼을 인자로 전달받음
+      btn.addEventListener("click", () => {
+        //클릭한 버튼의 부모요소(li)를 선택하여 display를 none으로 변경하여 리스트를 제거
+        btn.parentElement.style.display = "none"
+      })
+    }
+
+    //항목을 클릭할 때 체크 기호 추가
+    const list = document.querySelector("#myUl");
+    //ul요소에 클릭이벤트 생성
+    list.addEventListener("click", (e) => {
+      //e.target.tagName => 태그이름을 읽어오는 속성
+      if(e.target.tagName === "LI"){//클릭한 요소가 li요소면 실행
+        e.target.classList.toggle("checked");//타겟요소에 checked클래스 추가/제거
+      }
+    })
+
+    //추가 버튼 클릭시 새 항목 생성
+    const addBtn = document.querySelector(".addBtn")
+    //추가 버튼에 클릭이벤트 생성
+    addBtn.addEventListener("click", () => {
+      console.log("1")
+      const myInput = document.querySelector("#myInput")//myInput요소 선택
+      const inputValue = myInput.value;//input에 입력한 내용을 inputValue에 할당
+      const txt = document.createTextNode(inputValue)//입력한 값으로 텍스트 노드 생성
+
+      const li = document.createElement("li")//li요소 생성
+      li.appendChild(txt)//생성한 li요소에 txt저장한 텍스트노드를 넣어줍니다
+
+      if(inputValue === ""){//입력한 값이 없으면
+        alert("입력창에 아무것도 입력하지 않았습니다")
+      }else{//입력값이 있을때만 li요소를 추가
+        list.appendChild(li);//생성한 li요소를 리스트에 추가
+      }
+
+      addCloseBtn(li)//addCloseBtn함수의 인자로 생성한 li요소를 전달하여 close버튼을 생성
+      const btn = li.querySelector(".close")//생성한 li요소의 close버튼을 선택
+      closeEvent(btn)//closeEvent함수로 생성한 close버튼을 전달하여 이벤트 생성
+      
+    })
+  </script>
+</body>
+</html>

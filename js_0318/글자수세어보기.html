@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>입력한 글자 수 세어보기</title>
+  <style>
+    body{
+      text-align: center;
+      padding:32px;
+    }
+    #text{
+      border:4px solid #ccc;
+      border-radius: 8px;
+      width:600px;
+      height:240px;
+      font-size:18px;
+      padding:16px;
+      margin-bottom:16px;
+    }
+    #count{
+      font-size:30px;
+    }
+    /*100글자를 넘어가면 추가할 속성*/
+    .alert{color:#f66;}
+  </style>
+</head>
+<body>
+  <textarea id="text"></textarea>
+  <p>글자는 100자 이내로 입력해주세요.</p>
+  <p>현재 <span id="count">0</span> 글자</p>
+  <script>
+    const text = document.querySelector("#text")
+    const count = document.querySelector("#count")
+
+    //키보드 버튼을 눌렀을때 실행
+    text.addEventListener('keyup', () => {
+      //입력한 글자수를 length로 카운트하기
+      count.textContent = text.value.length;
+
+      //100자가 넘어가면 글자 색상 변경
+      if(text.value.length > 100){
+        //count요소에 alert클래스 추가
+        count.classList.add("alert");
+      }else{//100자 이내라면
+        //alert클래스를 제거
+        count.classList.remove("alert");
+      }
+    })
+
+    //이모티콘, 한자중 일부는 한 글자인데 두글자로 카운트 되는 경우가 있습니다
+    //스프레드 연산자를 사용하면 한글자로 인식합니다
+    console.log([..."😍"].length)
+  </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>미니멀 쇼핑몰</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Arial', sans-serif;
+  color: #000000;
+  background: #fff;
+  line-height: 1.6;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  background: #f8f8f8;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+nav a {
+  text-decoration: none;
+  color: #696363;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: #807c7c;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.btn {
+  padding: 10px 20px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Product Section */
+.products {
+  padding: 50px 5%;
+}
+.products h2 {
+  margin-bottom: 30px;
+}
+.product-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.product {
+  width: 200px;
+  border: 1px solid #ffffff;
+  padding: 15px;
+  text-align: center;
+}
+.product img {
+  width: 100%;
+  height: auto;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #7e7979;
+  margin-top: 40px;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">DY & BAG</div>
+    <nav>
+      <ul>
+        <li><a href="#">DY브랜드</a></li>
+        <li><a href="#">가방</a></li>
+        <li><a href="#">이벤트</a></li>
+        <li><a href="#">신제품</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>감각적인 라이프스타일</h1>
+    <p>당신을 위한 미니멀 쇼핑몰</p>
+  </section>
+
+  <section class="products">
+    <h2>신상품</h2>
+    <div class="product-list">
+      <div class="product">
+        <img src="images/숄더8.png" alt="상품1" />
+        <h3>상품명 1</h3>
+        <p>₩29,000</p>
+      </div>
+      <div class="product">
+        <img src="images/크로스5.png" alt="상품2" />
+        <h3>상품명 2</h3>
+        <p>₩39,000</p>
+      </div>
+      <div class="product">
+        <img src="images/크로스5.png" alt="상품2" />
+        <h3>상품명 2</h3>
+        <p>₩39,000</p>
+      </div>
+      <div class="product">
+        <img src="images/크로스5.png" alt="상품2" />
+        <h3>상품명 2</h3>
+        <p>₩39,000</p>
+      </div>
+      <div class="product">
+        <img src="images/크로스5.png" alt="상품2" />
+        <h3>상품명 2</h3>
+        <p>₩39,000</p>
+      </div>
+      <div class="product">
+        <img src="images/크로스5.png" alt="상품2" />
+        <h3>상품명 2</h3>
+        <p>₩39,000</p>
+      </div>
+      <div class="product">
+        <img src="images/크로스5.png" alt="상품2" />
+        <h3>상품명 2</h3>
+        <p>₩39,000</p>
+      </div>
+      
+      <!-- 추가 상품들... -->
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 MINISHOP. All rights reserved.</p>
+  </footer>
+</body>
+</html>

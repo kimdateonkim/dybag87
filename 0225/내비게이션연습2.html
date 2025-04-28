@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다운메뉴</title>
+  <script src="https://kit.fontawesome.com/632d3e2496.js" crossorigin="anonymous"></script>
+  <style>
+    *{margin:0; padding:0;}
+    ul{list-style:none;}
+    a{color:inherit; text-decoration: none;}
+
+    nav{
+      background-color:#f60;
+      min-width:1200px;
+    }
+    nav > .container{
+      width:1200px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items: center;
+      padding:0 20px;
+      box-sizing:border-box;/*padding영역을 width안으로 설정*/
+    }
+    nav .logo{
+      color:#fff;/*아이콘 색상 변경*/
+      font-size:30px;/*아이콘 크기 변경*/
+    }
+    nav .gnb{
+      color:#fff;
+      display:flex;
+      gap:60px;
+    }
+    .gnb > li a{
+      display:block;
+      padding:10px 0;
+      text-indent: 10px;/*들여쓰기*/
+    }
+    /*hover효과*/
+    .gnb > li:hover > a{
+      color:saddlebrown;
+    }
+    .sub > li > a:hover{
+      background-color:aquamarine;
+      color:#333;
+    }
+    /*==================*/
+    .gnb > li{
+      position:relative;
+    }
+    .sub{
+      position:absolute;
+      background-color:#999;
+      width:150px;
+      display:none;
+    }
+    /*주메뉴에 마우스를 올리면 서브메뉴가 나타남*/
+    .gnb > li:hover > .sub{
+      display:block;
+    }
+    /* .sub > li > a{
+      display:block;
+      padding:10px 0;
+      text-indent: 10px;
+    } */
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <h1 class="logo">
+        <a href="#"><i class="fas fa-umbrella"></i></a>
+      </h1>
+      <ul class="gnb">
+        <li>
+          <a href="#">ABOUT</a>
+          <ul class="sub">
+            <li><a href="#">My Name</a></li>
+            <li><a href="#">Birth Day</a></li>
+            <li><a href="#">Education</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">NEWS</a>
+          <ul class="sub">
+            <li><a href="#">Today News</a></li>
+            <li><a href="#">Social</a></li>
+            <li><a href="#">Information</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">PORTFOLIO</a>
+          <ul class="sub">
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Printout</a></li>
+            <li><a href="#">My Photo</a></li>
+            <li><a href="#">Illustration</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">BOARD</a>
+          <ul class="sub">
+            <li><a href="#">Notice</a></li>
+            <li><a href="#">Free Board</a></li>
+            <li><a href="#">Contact Me</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">ALBUM</a>
+          <ul class="sub">
+            <li><a href="#">Our Family</a></li>
+            <li><a href="#">My Friends</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">CONTACT</a>
+          <ul class="sub">
+            <li><a href="#">Location</a></li>
+            <li><a href="#">E-mail</a></li>
+            <li><a href="#">Mobile Phone</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</body>
+</html>

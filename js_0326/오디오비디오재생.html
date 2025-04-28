@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>비디오 오디오 재생</title>
+</head>
+<body>
+  <!--오디오 재생-->
+  <audio id="myAudio"></audio>
+  <button class="aBtn" type="button">시작(play)</button>
+  <button class="bBtn" type="button">멈춤(pause)</button>
+
+  <hr>
+
+  <audio controls>
+    <source src="vid/happybirthday.ogg" type="audio/ogg">
+    <source src="vid/happybirthday.mp3" type="audio/mp3">
+    사용하는 브라우저가 HTML5(audio태그)를 지원하지 않습니다.
+  </audio>
+
+  <!--비디오 재생-->
+  <video id="myVideo" width="320" height="240">
+    <source src="vid/vid.mp4" type="video/mp4">
+    사용하는 브라우저가 HTML5(video태그)를 지원하지 않습니다.
+  </video>
+  <button class="playBtn" type="button">시작(play)</button>
+  <button class="stopBtn" type="button">멈춤(pause)</button>
+
+
+  <script>
+    //오디오 재생
+    const audio = document.querySelector("#myAudio")
+    const aBtn = document.querySelector(".aBtn")
+    const bBtn = document.querySelector(".bBtn")
+
+    //aBtn을 클릭하면 mp3소스를 적용하고 play
+    aBtn.addEventListener("click",() => {
+      audio.src = 'vid/happybirthday.mp3'
+      audio.play()
+    })
+
+    //bBtn을 클릭하면 음성파일이 멈춤
+    bBtn.addEventListener("click", () => {
+      audio.pause()
+    })
+
+    //비디오 재생
+    const video = document.querySelector("#myVideo")
+    const playBtn = document.querySelector(".playBtn")
+    const stopBtn = document.querySelector(".stopBtn")
+
+    //썸네일 이미지 
+    video.poster = "vid/cat.jpg"
+
+    //playBtn을 클릭하면 영상 재생
+    playBtn.addEventListener("click",() => {
+      video.play()
+    })
+
+    //stopBtn을 클릭하면 영상이 멈춤
+    stopBtn.addEventListener("click", () => {
+      video.pause()
+    })
+  </script>
+</body>
+</html>

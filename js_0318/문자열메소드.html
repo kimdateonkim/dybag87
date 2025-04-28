@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문자열 메소드</title>
+</head>
+<body>
+  <script>
+    //문자열.search(/정규식/)
+    let s = "hello World";
+    //s문자열에서 대문자를 찾아서 index를 출력해줍니다
+    console.log(s.search(/[A-Z]/)); //6
+
+    //부분 문자 추출
+    console.log(s.slice(2,4)); //ll
+    console.log(s.slice(2)); //llo World
+    console.log(s.slice(-3)); //rld
+    console.log(s);
+
+
+    s = "one two three four";
+    let a = s.split(" ");
+    console.log(a)
+  </script>
+</body>
+</html>

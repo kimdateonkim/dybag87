@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5초 간격 이미지 변환</title>
+  <style>
+    #pic{
+      width:300px;
+      border-radius: 10px;
+      box-shadow: 1px 1px 2px black;
+    }
+  </style>
+</head>
+<body>
+  <img src="img/pic1.jpg" alt="이미지" id="pic">
+  <script>
+    const pic = document.querySelector("#pic");
+
+    //pic요소의 src속성값의 뒤에서 5번째 1글자를 변수 sNum에 저장
+    let sNum = pic.getAttribute("src").substr(-5,1)
+    console.log(sNum)
+    //5초에 한번씩 함수를 반복호출
+    setInterval(function(){
+      //sNum변수가 3보다 크거나 같으면 sNum값을 0으로 수정
+      if(sNum >= 3) sNum = 0
+      sNum++;//sNum변수를 1증가 시킴
+      //pic요소의 src속성의 이미지 경로를 변경하여 이미지를 변환
+      pic.setAttribute("src",`img/pic${sNum}.jpg`)
+     
+    },5000);
+  </script>
+</body>
+</html>

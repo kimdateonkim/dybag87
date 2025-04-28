@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>환경설정</title>
+  <!--vuejs CDN-->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <!--스크립트로 버튼을 누르면 counter값을 1씩 증가하는 구문-->
+  <div id="counter">
+    <button type="button" v-on:click="counter++">
+      <!--템플릿 문법을 통해서 counter값을 출력할 수 있습니다-->
+      Counter: {{ counter }}
+    </button>
+  </div>
+  <script>
+    //vue를 가져오고 createApp메서드를 통해서 vue인스턴스를 생성, 옵션을 이용해서 vue애플리케이션을 조작할 수 있습니다
+    const app = Vue.createApp({
+      data(){
+        return {
+          counter : 0 //상태 변수
+        }
+      }
+    })
+
+    //생성된 인스턴스에 마운트 메서드를 통해서 렌더링할 컨테이너 위치를 지정할 수 있다.
+    app.mount("#counter")
+  </script>
+</body>
+</html>

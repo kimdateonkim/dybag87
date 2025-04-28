@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tabmenu</title>
+</head>
+<body>
+  <ul class="tab_menu">
+    <!--요소 내에 이벤트를 적용하는 방식-->
+		<li onclick="tabMenu()">공지사항</li>
+		<li onclick="tabMenu()">알림마당</li>
+		<li onclick="tabMenu()">보도자료</li>
+		<li onclick="tabMenu()">채용정보</li>
+	</ul>
+  <script>
+    // 선택자
+    // document.querySelector(선택자) = DOM요소
+    // document.querySelectorAll(선택자) = NodeList
+
+    //tab_menu와 li요소들을 선택하고 tab_menu는 배경색 변경(orange)
+    const tab = document.querySelector(".tab_menu")
+    const tabLi = document.querySelectorAll(".tab_menu > li")
+
+    tab.style.backgroundColor = 'orange';
+
+    //li요소들을 순회하면서(for문 활용) li요소들의 글자색상을 red로 변경
+    //for(초기화;조건식;증가&증감식){실행코드}
+    //console.log(tabLi)
+    for(let i = 0; i < tabLi.length; i++){
+      tabLi[i].style.color = "red"
+    }
+    
+    //3번째 li요소의 글자색상을 검은색으로 만들어 보세요
+    tabLi[2].style.color = "black";
+    
+    // 자식 노드 선택
+    //firstElementChild, lastElementChild, children
+    
+    //첫번째 li요소는 보라색, 두번째 li요소는 파란색, 마지막 li요소는 녹색
+    tab.firstElementChild.style.color = "purple"
+    tab.children[1].style.color = "blue"
+    tab.lastElementChild.style.color = "green"
+    
+    //이벤트
+    //선택자.onclick = function(){}
+    //선택자.addEventListener("이벤트타입",콜백함수)
+    
+    //첫번째 li요소에 클릭이벤트를 생성해서 이벤트가 발생하면 .tab_menu의 배경색을 pink로 변경하는 코드 작성
+    function tabMenu(){}
+    tabLi[0].addEventListener("click",() => {
+      tab.style.backgroundColor = "pink"
+    })
+    
+    //모든 li요소에 클릭이벤트를 생성하고 클릭이벤트가 발생하면 클릭한 li요소의 배경색을 green으로 설정
+    for(let i = 0; i < tabLi.length; i++){
+      //바깥쪽 i는 for문이 순차적으로 순회하고 있는 index숫자
+      tabLi[i].addEventListener("click",() => {
+        //안쪽 i는 이벤트가 발생된 li요소의 index입니다
+        tabLi[i].style.backgroundColor = "green";
+      })
+    }
+  </script>
+</body>
+</html>

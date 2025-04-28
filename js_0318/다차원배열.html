@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다차원배열</title>
+</head>
+<body>
+  <script>
+    //i값이 1부터 6까지 1씩 증가하며 반복실행
+    for(let i = 1; i <= 6; i++){
+      //j값이 1부터 6까지 1씩 증가하며 반복실행
+      for(let j = 1; j <= 6; j++){
+        //i+j값이 6일 경우에만 i와 j값을 출력
+        if(i+j === 6) console.log(`[${i}, ${j}]`);
+      }
+    }
+
+    let a = [
+      [
+        [1,2],[3,4]
+      ],
+      [
+        [5,6],[7,8]
+      ],
+      [
+        [9,10],[11,12]
+      ]
+    ];
+
+    for (let i = 0; i < a.length; ++i)
+      for (let j = 0; j < a[i].length; ++j)
+        for (let k = 0; k < a[i][j].length; ++k)
+          console.log(a[i][j][k]);
+
+    //2차원 배열로 학생들의 성적을 정의
+    const students = [
+      ['홍길동', 85, 92, 88], //학생1 (이름, 수학, 영어, 과학 성적)
+      ['김영희', 78, 85, 90],
+      ['이철수', 95, 88, 92],
+    ];
+
+    //2차원 배열을 순회하며 각 학생의 성적을 출력합니다
+    for(let i = 0; i < students.length; i++){
+      const student = students[i]; //각 학생 배열
+      const name = student[0]; //학생 이름
+      const math = student[1]; //수학 성적
+      const english = student[2]; //영어 성적
+      const science = student[3]; //과학 성적
+
+      //학생의 이름과 성적을 출력합니다
+      console.log(`${name} 학생의 성적`);
+      console.log(`수학 : ${math}`)
+      console.log(`영어 : ${english}`)
+      console.log(`과학 : ${science}`)
+      console.log(`----------------------`)
+    }
+  </script>
+</body>
+</html>

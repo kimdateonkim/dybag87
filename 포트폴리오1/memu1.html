@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ATELIER BAG</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f8f8f8;
+  color: #111;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* 헤더 */
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: #555;
+}
+
+/* 메인 비주얼 */
+#main-visual {
+  background: url('https://via.placeholder.com/1200x600?text=Elegant+Bag+Collection') no-repeat center center/cover;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.overlay {
+  background-color: rgba(94, 87, 87, 0.6);
+  padding: 40px 60px;
+  border-radius: 8px;
+}
+
+#main-visual h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+#main-visual p {
+  font-size: 16px;
+  color: #3d3737;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background-color: #222;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 3px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background-color: #463e3e;
+}
+
+/* 제품 섹션 */
+#products h3 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.product-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.product {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+}
+
+.product img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.product p {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.product span {
+  display: block;
+  margin-top: 5px;
+  color: #4b4040;
+}
+
+/* 푸터 */
+footer {
+  background: #534f4f;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #8f8282;
+}
+  </style>
+
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">DY & BAG</h1>
+      <nav>
+        <ul>
+          <li><a href="#">컬렉션</a></li>
+          <li><a href="#">베스트</a></li>
+          <li><a href="#">스토리</a></li>
+          <li><a href="#">문의</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="main-visual">
+    <div class="overlay">
+      <h2>Time to Carry Elegance</h2>
+      <p>미니멀한 디자인, 클래식한 감성</p>
+      <a href="#" class="btn">컬렉션 보기</a>
+    </div>
+  </section>
+
+  <section class="container" id="products">
+    <h3>Featured Bags</h3>
+    <div class="product-grid">
+      <div class="product">
+        <img src="images/숄더5.png" alt="토트백" />
+        <p>Classic Tote</p>
+        <span>₩159,000</span>
+      </div>
+      <div class="product">
+        <img src="images/크로스3.png" alt="미니 크로스백" />
+        <p>Mini Cross</p>
+        <span>₩119,000</span>
+      </div>
+      <div class="product">
+        <img src="images/토트8.png" alt="백팩" />
+        <p>Vintage Backpack</p>
+        <span>₩139,000</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 ATELIER BAG. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

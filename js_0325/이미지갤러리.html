@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이미지갤러리</title>
+  <style>
+    *{margin:0; padding:0;}
+    ul,li{list-style:none;}
+    body{background-color:#333;}
+    img{display:block;}
+    #wrap{
+      width:640px;
+      margin:100px auto 0;
+    }
+    #nav{
+      display:flex;
+      justify-content: space-between;
+      margin-bottom:10px;
+    }
+    #nav a{
+      display:block;
+      border:2px solid #bbb;
+      border-radius: 5px;
+    }
+    #nav a img{
+      width:70px;
+    }
+    #nav a.active{border-color:#fff;}
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <ul id="nav">
+      <li><a href="img/lop0.jpg" class="active">
+        <img src="img/thumb0.jpg" alt="그림0">
+      </a></li>
+      <li><a href="img/lop1.jpg">
+        <img src="img/thumb1.jpg" alt="그림1">
+      </a></li>
+      <li><a href="img/lop2.jpg">
+        <img src="img/thumb2.jpg" alt="그림2">
+      </a></li>
+      <li><a href="img/lop3.jpg">
+        <img src="img/thumb3.jpg" alt="그림3">
+      </a></li>
+      <li><a href="img/lop4.jpg">
+        <img src="img/thumb4.jpg" alt="그림4">
+      </a></li>
+      <li><a href="img/lop5.jpg">
+        <img src="img/thumb5.jpg" alt="그림5">
+      </a></li>
+      <li><a href="img/lop6.jpg">
+        <img src="img/thumb6.jpg" alt="그림6">
+      </a></li>
+      <li><a href="img/lop7.jpg">
+        <img src="img/thumb7.jpg" alt="그림7">
+      </a></li>
+    </ul>
+    <div id="window"><img src="img/lop0.jpg"></div>
+  </div>
+  <script>
+    const links = document.querySelectorAll("#nav a");
+    const displayImg = document.querySelector("#window img");
+    //배열.forEach(배열요소 => 실행코드) = 배열요소를 순회하면서 실행코드를 반복하는 반복함수
+    links.forEach(link => {
+      //모든 a요소에 클릭이벤트 생성
+      link.addEventListener("click", (e) => {
+        //이미지의 링크 기능 막기
+        e.preventDefault();
+        
+        //getAttribute는 ()에 있는거 다 읽어옴, 지금은 href
+        const imgUrl = link.getAttribute("href");
+        console.log(imgUrl)
+        //displayImg에 읽어온 imgUrl경로를 src경로값으로 설정
+        displayImg.setAttribute("src", imgUrl);
+
+        //모든 링크에서 active클래스를 제거
+        links.forEach(link => link.classList.remove("active"));
+        //클릭된 링크에 active클래스를 추가
+        link.classList.add("active")
+      })
+    })
+  </script>
+</body>
+</html>

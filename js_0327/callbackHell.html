@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>callback hell</title>
+</head>
+
+<body>
+  <script>
+    //숫자 n을 파라미터로 받아와서 다섯번에 걸쳐 1초마다 1씩 더해서 출력하는 작업을 setTimeout함수로 구현한 코드
+    function increaseAndPrint(n, callback) {
+      setTimeout(() => {
+        const increased = n + 1;
+        console.log(increased);
+        if (callback) {
+          callback(increased); // 콜백함수 호출
+        }
+      }, 1000);
+    }
+
+    increaseAndPrint(0, n => {
+      increaseAndPrint(n, n => {
+        increaseAndPrint(n, n => {
+          increaseAndPrint(n, n => {
+            increaseAndPrint(n, n => {
+              console.log('끝!');
+            });
+          });
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

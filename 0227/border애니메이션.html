@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>border 애니메이션</title>
+  <style>
+    body{
+      margin-top:20%;
+      text-align: center;
+    }
+
+    button{
+      background:none;
+      border:none;
+      box-sizing: border-box;
+      padding:1rem 4rem;
+      /*inset(요소안쪽으로 그림자적용) x축 y축 blur 확장값 색상*/
+      box-shadow:inset 0 0 0 2px orange;
+      color:orange;
+      font-weight: bold;
+      position:relative;
+      transition:color 0.25s;/*color속성이 변경되면 0.25초동안 변경*/
+    }
+
+    button::before,
+    button::after{
+      content:"";
+      box-sizing: border-box;
+      position:absolute;
+      border:2px solid transparent;
+      width:0; height:0;
+    }
+    button::before{/*위치를 왼쪽 상단으로 정렬*/
+      top:0; left:0;
+    }
+    button::after{/*위치를 오른쪽 하단으로 정렬*/
+      bottom:0; right:0;
+    }
+    /*hover 시*/
+    button:hover{color:steelblue;}
+
+    button:hover::before,
+    button:hover::after{
+      width:100%;
+      height:100%;
+    }
+    button:hover::before{
+      border-top-color:steelblue;
+      border-right-color:steelblue;
+      transition:width 0.25s ease-out, height 0.25s ease-out 0.25s;
+    }
+
+    button:hover::after{
+      border-bottom-color:steelblue;
+      border-left-color:steelblue;
+      transition:border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
+    }
+  </style>
+</head>
+<body>
+  <button type="button">Draw</button>
+</body>
+</html>

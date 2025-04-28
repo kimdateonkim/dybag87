@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>팝업이미지</title>
+  <style>
+    .myImg{
+      width:300px;
+      height:200px;
+      border-radius: 5px;
+      cursor:pointer;
+      transition: 0.3s;
+    }
+    .myImg:hover{
+      opacity:0.7;
+    }
+
+    .modal{
+      position:fixed;
+      top:0; left:0; right:0; bottom:0;
+      overflow:auto;/*큰이미지가 들어오면 스크롤바를 표시*/
+      background-color:rgba(0,0,0,0.9);
+      padding-top:100px;
+      display:none;
+    }
+
+    .modal-content{
+      display:block;
+      width:80%;
+      max-width:700px;
+      margin:auto;
+      animation:zoom 0.6s;
+    }
+
+    @keyframes zoom{
+      0%{transform:scale(0);}
+      100%{transform:scale(1);}
+    }
+
+    .close{/*닫기 버튼은 오른쪽 상단에 배치*/
+      position:absolute;
+      top:15px; right:35px;
+      color:#f1f1f1;
+      font-weight: bold;
+      font-size:40px;
+      cursor:pointer;
+      transition: 0.3s;
+    }
+
+    .close:hover{
+      color:#bbb;
+    }
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <img class="myImg" src="img/pic1.jpg" alt="팝업 이미지1">
+    <img class="myImg" src="img/pic2.jpg" alt="팝업 이미지2">
+    <img class="myImg" src="img/pic3.jpg" alt="팝업 이미지3">
+  </div> 
+  <div class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content">
+  </div>
+  <script>
+    const myImg = document.querySelector(".image-container");
+    const modal = document.querySelector(".modal");
+
+    //myImg요소를 선택하여 클릭이벤트 생성
+    myImg.addEventListener("click",(e) => {//event객체를 인자로 전달 받음
+      //클릭한 요소의 src속성값을 불러오고 그 값을 modal-content에 적용
+      document.querySelector(".modal-content").src = e.target.src;
+      //모달을 화면에 표시
+      modal.style.display = "block";
+    })
+
+    //close버튼을 클릭하면 modal의 display를 none으로 변경하는 구문
+    const close = document.querySelector(".close");
+    close.addEventListener("click", () => {
+      modal.style.display = "none";
+    })
+  </script>
+</body>
+</html>

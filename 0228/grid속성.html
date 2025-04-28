@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>grid속성</title>
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+    }
+    .item{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      font-size:1.2rem;
+      font-weight: bold;
+      border:1px solid black;
+    }
+    .color1{background-color:aqua;}
+    .color2{background-color:tomato;}
+    .color3{background-color:gold;}
+    .color4{background-color:darkcyan;}
+    .color5{background-color:brown;}
+
+    /*grid*/
+    .container{
+      display:grid;
+      /*몇개의 열(column)을 만들어 줄것인지 크기는 어떻게 설정할 것인지를 정의*/
+      grid-template-columns:100px 200px 100px;
+      /*몇개의 줄(row)을 만들어 줄 것인지 설정*/
+      /* grid-template-rows:200px 200px 100px 100px; */
+
+      /*repeat함수 : repeat(반복할 횟수, 크기)*/
+      grid-template-columns: repeat(5, 100px);
+
+      /*%단위 , fr단위 활용*/
+      grid-template-columns: repeat(5,20%);
+      /*fr: 배율로 칸의 갯수와 크기를 설정*/
+      grid-template-columns: 1fr 2fr 1fr;
+
+      /*각 row의 크기를 150px로 설정*/
+      grid-auto-rows:150px;
+      /*minmax(최소값, 최대값)*/
+      grid-auto-rows: minmax(150px, auto);
+
+      /*콘텐츠 사이 여백*/
+      grid-column-gap:10px;
+      grid-row-gap:10px;
+      /*축약*/
+      grid-gap:10px;
+      padding:10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item color1">Item1</div>
+    <div class="item color2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum autem reiciendis consequuntur! Ea laborum nisi vero, similique ratione consequuntur porro unde corrupti aliquid sint sapiente sit voluptatem nihil eligendi quis.
+    Laborum reprehenderit rem natus veritatis nostrum nisi? Enim quasi maiores, laudantium unde deserunt quisquam illum quia temporibus et architecto dolorem voluptate aperiam non similique? Asperiores reiciendis nesciunt natus delectus perspiciatis!</div>
+    <div class="item color3">Item3</div>
+    <div class="item color4">Item4</div>
+    <div class="item color5">Item5</div>
+    <div class="item color1">Item6</div>
+    <div class="item color2">Item7</div>
+    <div class="item color3">Item8</div>
+    <div class="item color4">Item9</div>
+    <div class="item color5">Item10</div>
+  </div>
+</body>
+</html>

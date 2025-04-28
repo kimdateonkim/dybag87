@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model = 양방향데이터바인딩</title>
+  <!--vuejs CDN-->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="valueModel"/>
+    <p>{{ valueModel }}</p>
+
+    <!--여러줄 메시지-->
+    <textarea v-model="message"></textarea>
+    <p>{{ message }}</p> 
+    
+    <div>
+      <label>
+        <input type="checkbox" v-model="checked">{{ checked }}
+      </label>
+    </div>
+    <!--배열에 여러개의 체크박스 값을 바인딩할 수 있습니다-->
+    <h2>체크된 이름: {{ checkedNames }}</h2>
+    <input type="checkbox" id="jack" value="잭" v-model="checkedNames"/>
+    <label for="jack">잭</label>
+
+    <input type="checkbox" id="john" value="존" v-model="checkedNames"/>
+    <label for="john">존</label>
+
+    <input type="checkbox" id="mike" value="마이크" v-model="checkedNames"/>
+    <label for="mike">마이크</label>
+    <hr />
+    <div>
+      <label><input type="radio" value="서울" v-model="picked"/>서울</label>
+      <label><input type="radio" value="부산" v-model="picked"/>부산</label>
+      <label><input type="radio" value="제주" v-model="picked"/>제주</label>
+      <br/>
+      <span>선택한 지역 : {{ picked }}</span>
+    </div>
+    <hr />
+    <div>선택됨 : {{ selected }}</div>
+    <select v-model="selected">
+      <!--disabled = 비활성화-->
+      <option disabled value="">다음 중 하나를 선택하세요</option>
+      <option value="02">서울</option>
+      <option value="21">부산</option>
+      <option value="064">제주</option>
+    </select>
+
+    <br>
+    <!--
+      true-value 및 false-value 속성은 v-model을 사용하는 경우에만 작동하는 vue 전용 속성 입니다
+    -->
+      <label>
+        <input type="checkbox" v-model="toggle" true-value="네" false-value="아니오" />
+        {{toggle}}
+      </label>
+
+      <br/>
+      <!--사용자 입력이 자동으로 숫자로 유형변환되도록 해주는 수식어 = .number-->
+      <input type="number" v-model.number="numberModel" />
+  </div>
+  <script>
+    const app = {
+      data() {
+        return {
+          numberModel : 3,
+          valueModel: "South Korea",
+          message : "여러 줄을 입력할 수 있는 textarea입니다",
+          checked : true, //체크 = true, 해제 = false
+          checkedNames: [],
+          picked: '',
+          selected: '',
+          toggle: '아니오'
+        }
+      }
+    }
+    Vue.createApp(app).mount("#app")
+  </script>
+</body>
+</html>

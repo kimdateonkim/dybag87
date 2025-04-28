@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트 위임</title>
+</head>
+
+<body>
+  <button type="button" class="btn1">버튼 추가</button>
+  <button type="button" class="btn2">버튼 제거</button>
+
+  <ul class="itemList">
+    <li><input type="button" value="button1"></li>
+    <li><input type="button" value="button2"></li>
+  </ul>
+  <script>
+    //매번 요소가 새로 추가될때마다 이벤트 리스너를 새로 작성하는 것은 번잡합니다
+    //이벤트위임을 활용화면 이벤트 리스너를 매번 새로 작성하지 않아도 됩니다
+
+    //itemList를 선택
+    const itemList = document.querySelector(".itemList");
+
+    //itemList에 click이벤트를 생성
+    itemList.addEventListener("click", (e) => {
+      //경고창에 클릭한 요소(버튼)의 value를 경고창에 출력
+      alert(`${e.target.value}클릭`)
+    })
+
+    //btn1을 선택
+    const btn1 = document.querySelector(".btn1");
+    let i = 2; //button글자뒤에 붙는 순번
+    //btn1에 클릭이벤트 생성
+    btn1.addEventListener("click", () => {
+      i++;//i값을 1증가
+
+      //li요소를 생성
+      const li = document.createElement("li");
+      //input요소 생성
+      const input = document.createElement("input");
+      //input요소에 type속성과 value속성을 적용
+      input.setAttribute("type", "button")
+      input.setAttribute("value", "button"+i) //value값으로 i를 대입
+      //생성한 input요소를 생성한 li에 할당
+      li.appendChild(input)
+      //itemlist의 마지막 자손요소로 생성한 li를 할당
+      itemList.appendChild(li);
+    })
+
+    //이벤트 버블링의 원리를 활용해 하위에서 발생한 클릭 이벤트를 상위 요소인 .itemList 태그에서 감지 하는 것 = 이벤트 위임
+
+    //버튼 요소 제거
+    document.querySelector(".btn2").addEventListener("click",() => {
+      //제거할 마지막 li요소를 선택
+      const li = document.querySelector(".itemList > li:last-child")
+      i--;//i값을 감소시킴
+      li.remove();//마지막 요소를 제거
+    })
+  </script>
+</body>
+
+</html>

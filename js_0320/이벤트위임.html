@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>버튼 생성</title>
+</head>
+<body>
+  <ul class="itemList">
+    <li><input type="button" value="button1"></li>
+    <li><input type="button" value="button2"></li>
+  </ul>
+  <script>
+    //btns변수에 input요소들을 nodeList로 할당
+    const btns = document.querySelectorAll("input");
+
+    //배열.forEach((배열요소,배열의 index, 원본배열) => {실행코드})
+    //버튼을 순회하면서 모든 버튼 요소에 클릭이벤트를 생성, 함수내부로 이벤트객체를 전달
+    btns.forEach(btn => btn.addEventListener("click", (e) => {
+      //경고창으로 버튼의 value값을 출력
+      alert(`${e.target.value} 클릭`)
+    }))
+
+    //버튼을 동적으로 추가하는 구조일 경우
+    //button3 추가
+    const itemList = document.querySelector(".itemList")
+
+    //li요소를 생성
+    const li = document.createElement("li");
+    //input요소 생성
+    const input = document.createElement("input");
+    //input요소에 type속성과 value속성을 적용
+    input.setAttribute("type","button")
+    input.setAttribute("value","button3")
+    //생성한 input요소를 생성한 li에 할당
+    li.appendChild(input)
+    //itemlist의 마지막 자손요소로 생성한 li를 할당
+    itemList.appendChild(li);
+
+    //btn1과 btn2는 클릭할 경우 정상적으로 alert(경고창)이 작동하지만 btn3은 이벤트 핸들러를 등록하지 않았기 때문에 클릭하도라도 아무런 일도 발생하지 않는다
+
+    //다른 버튼처럼 이벤트를 활성화하기 위해서는 이벤트를 따로 추가해주어야 한다
+    input.addEventListener("click", (e) => {
+      alert(`${e.target.value}클릭`)
+    })
+  </script>
+</body>
+</html>

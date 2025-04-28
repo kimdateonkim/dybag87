@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카운트다운</title>
+  <style>
+    html, body{height:100%; margin:0;}
+    .bgimg{
+      height:100%;
+      background:linear-gradient(0deg,rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(img/img.jpg) center/cover;
+      position:relative;
+      color:#f1f1f1;
+      font-family: 'Courier New', Courier, monospace;
+      font-size:25px;
+    }
+    .topleft{
+      position:absolute;
+      top:0;
+      left:16px;
+    }
+    .bottomleft{
+      position:absolute;
+      bottom:0; left:16px;
+    }
+    .middle{
+      position:absolute;
+      left:50%; top:50%;
+      transform:translate(-50%, -50%);
+      text-align: center;
+    }
+    hr{
+      width:40%;
+      margin:auto;
+      border:1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="bgimg">
+    <div class="topleft">
+      <p>Logo</p>
+    </div>
+    <div class="middle">
+      <h1>COMING SOON</h1>
+      <hr>
+      <p id="demo" style="font-size: 30px;"></p>
+    </div>
+    <div class="bottomleft">
+      <p>Some text</p>
+    </div>
+  </div>
+  <script>
+    //카운트다운 날짜를 설정
+    const countDownDate = new Date("Mar 24, 2025 12:34:00")
+    //console.log(countDownDate)
+
+    //1초마다 카운트다운 업데이트
+    let x = setInterval(function(){
+      //오늘 날짜 및 시간 정보를 변수에 할당
+      const now = new Date().getTime(); //밀리세컨드 단위로 현재 시간정보를 구해줍니다(기준 1970년)
+      //console.log(now)
+
+      //카운트다운 날짜 - 오늘 날짜 = 남은 시간(밀리세컨드 단위로 값이 반환)
+      const distance = countDownDate - now;
+      //console.log(distance)
+
+      //일, 시간, 분, 초에 대한 시간 계산
+      //일 = 남은 시간 / (1000*60*60*24)
+      //floor() = 내림함수 (일 계산후 남은 시간, 분, 초 정보를 버려주는 역할)
+      const days = Math.floor(distance / (1000*60*60*24))
+      //날짜로 나눴을때 나머지값을 가지고 시간정보를 구해주는 구문
+      const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60))
+      //시간정보를 구하고 남은 값으로 분 정보를 구해줍니다
+      const minutes = Math.floor((distance % (1000*60*60)) / (1000*60))
+      const seconds = Math.floor((distance % (1000*60)) / 1000)
+      //console.log(days,hours,minutes,seconds)
+
+      //#demo인 요소에 결과 표시
+      document.querySelector("#demo").textContent = `${days}일 ${hours}시 ${minutes}분 ${seconds}초`
+
+      //카운트 다운이 완료되면 "이벤트 시작"라는 문자 출력
+      if(distance < 0){//남은 시간이 0보다 작으면
+        clearInterval(x);//반복 함수를 종료
+        document.querySelector("#demo").textContent = "이벤트 시작";
+      }
+    },1000)
+  </script>
+</body>
+</html>

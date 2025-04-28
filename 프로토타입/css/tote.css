@@ -1,0 +1,24 @@
+* {margin: 0; padding: 0;}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background:#ffffff;
+}
+.wrap{
+  width:1280px;
+  margin:auto;
+  display:flex;
+  flex-wrap:wrap;
+}
+.wrap .bag{
+  border: 1px solid #e6e2e4;
+}
+.box{
+  padding:20px 30px;
+}
+.bag .box h2{
+  margin-bottom:20px;
+}

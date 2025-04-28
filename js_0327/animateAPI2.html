@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>animateAPI</title>
+  <style>
+    body{
+      height:3000px;
+    }
+    #heading{
+      width:100%;
+      text-align:center;
+      position:fixed;
+      opacity:0;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="heading">자바스크립트로 애니메이션</h1>
+  <script>
+    const heading = document.querySelector("#heading")
+    //객체 = {key: value, key : value}
+    const keyframes = {
+      opacity: [0, 1], //[시작값, 종료값]
+      translate: ['0 50px', 0]
+    }
+
+    const options = {
+      duration: 2000, 
+      easing: 'ease',
+      fill: "forwards" //애니메이션이 종료된 후 키프레임의 마지막 프레임 값을 유지
+      //backwards = 애니메이션이 종료된 후 처음 프레임 값으로 변경
+    }
+
+    let eventhandler = true;//이벤트 발생을 제어할 변수
+
+    //스크롤 이벤트 생성
+    addEventListener("scroll",(e) => {
+      if(eventhandler){//eventhandler가 true일 경우에만 코드실행
+        //스크롤 이동값을 구해줍니다
+        const scrollMove = window.scrollY;
+        console.log(scrollMove)
+        //스크롤을 300만큼 내렸을때 animate메서드 호출
+        if(scrollMove > 300){
+          eventhandler = false;//eventhandler를 false로 변경하여 이벤트가 한번만 발생되도록 합니다.
+          //animate(움직이는 내용, 재생 시간)
+          heading.animate(keyframes, options)
+        }
+      }
+    })
+
+  </script>
+</body>
+</html>

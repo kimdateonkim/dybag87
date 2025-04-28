@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이미지 슬라이드</title>
+  <style>
+    section{
+      width:500px;
+      height:300px;
+      margin:auto;
+      position:relative;
+    }
+    .prev,
+    .next{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+    }
+    .prev{left:0;}
+    .next{right:0;}
+
+    .imgSlide{
+      width:400px;
+      height:300px;
+      margin:auto;
+      overflow:hidden;
+    }
+    .imgSlide .imgGroup{
+      width:300%;
+      display:flex;
+      position:relative;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div class="imgSlide">
+      <div class="imgGroup">
+        <img src="images/img1.jpg" alt="">
+        <img src="images/img2.jpg" alt="">
+        <img src="images/img3.jpg" alt="">
+      </div>
+    </div>
+    <a class="prev" href="#"><img src="images/prev_btn.png"></a>
+    <a class="next" href="#"><img src="images/next_btn.png"></a>
+  </section>
+
+  <script>
+    const slide = document.querySelector(".imgGroup");
+    let current = 0; //left위치값
+    let distance = -400;//이동할 거리
+    let timer; //자동슬라이드의 setInterval함수를 담을 변수
+    let timerId; //화살표버튼에서 구현할 setInterval함수를 담을 변수
+    
+    function slideImg(){
+      timer = setInterval(function(){
+        current -= 20;//한번에 이동할 거리 = 20px
+        slide.style.left = current+"px";//current값을 slide의 left값으로 적용
+        //current값이 distance보다 작거나 같으면 
+        if(current <= distance) {
+          current = 0; //current값을 0으로 초기화
+          clearInterval(timer)//반복함수를 종료
+          const first = slide.firstElementChild//첫번째 요소
+          //첫번째 요소를 마지막 위치로 이동
+          slide.insertAdjacentElement('beforeend',first)
+          //slide의 left값을 0으로 초기화
+          slide.style.left = current+"px";
+        }
+      },1000/60)
+    }
+    //slideImg함수를 3초에 한번씩 반복호출
+    timerId = setInterval(slideImg, 3000);
+  </script>
+</body>
+</html>

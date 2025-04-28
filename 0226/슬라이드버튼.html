@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>슬라이드 버튼</title>
+  <style>
+    *{margin:0; padding:0; box-sizing: border-box;}
+    a{text-decoration: none; color:inherit;}
+
+    section{
+      width:500px;
+      margin:auto;
+      background-color:gold;
+      height:500px;
+      position:relative;
+      overflow:hidden;/*section요소 밖으로 넘어가는 내용을 가려줌*/
+    }
+    .side-nav a{
+      position:absolute;
+      width:120px;
+      padding:15px;
+      font-size:20px;
+      color:#fff;
+      /*좌상 , 우상 , 우하 , 좌하*/
+      border-radius: 0 10px 10px 0;
+      left:-100px;
+      transition: left 0.3s;
+    }
+    .side-nav a:hover{/*마우스를 버튼에 올리면 오른쪽으로 슬라이드되어 나타남*/
+      left:0;
+    }
+    #about{
+      top:20px;
+      background-color:#4caf50;
+    }
+    #blog{
+      top:90px;
+      background-color:#2196f3;
+    }
+    #projects{
+      top:160px;
+      background-color:#f44336;
+    }
+    #contact{
+      top:230px;
+      background-color:#555;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div class="side-nav">
+      <a href="#" id="about">About</a>
+      <a href="#" id="blog">Blog</a>
+      <a href="#" id="projects">Projects</a>
+      <a href="#" id="contact">Contact</a>
+    </div>
+  </section>
+</body>
+</html>
